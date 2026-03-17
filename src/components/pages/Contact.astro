@@ -1,0 +1,159 @@
+---
+const accent = "#C9A646"; // gold accent
+// Optional: central map location (for the fallback embed)
+const place = encodeURIComponent("Bhiraj Tower at EmQuartier, Bangkok");
+---
+
+<section class="min-h-screen text-white antialiased">
+  <!-- Top spacing -->
+  <div class="pt-16"></div>
+
+  <!-- Heading + subheading -->
+  <div class="px-4">
+    <div class="mx-auto max-w-[540px] text-center">
+      <h1 class="text-[39.2px] font-medium tracking-wide">Contact Us</h1>
+      <p class="mt-3 text-[18.9px] text-white/80">
+        Have a project in mind or need expert support? Let’s take your Nextstep
+        together.
+      </p>
+    </div>
+  </div>
+
+  <!-- Card form -->
+  <div class="px-4">
+    <div
+      class="mx-auto mt-8 max-w-[480px] rounded-2xl bg-white text-slate-800 shadow-2xl ring-1 ring-black/5"
+    >
+      <form class="p-6 sm:p-8" onsubmit="event.preventDefault()">
+        <div class="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-transparent focus:ring-2 text-base"
+            style={`--tw-ring-color:${accent}`}
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            class="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-transparent focus:ring-2 text-base"
+            style={`--tw-ring-color:${accent}`}
+          />
+          <textarea
+            placeholder="Message"
+            rows="6"
+            class="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 outline-none transition focus:border-transparent focus:ring-2 text-base"
+            style={`--tw-ring-color:${accent}`}></textarea>
+        </div>
+
+        <div class="mt-6">
+          <button
+            type="submit"
+            class="mx-auto block rounded-[20px] px-6 py-3 font-medium text-white shadow transition hover:brightness-110 active:translate-y-px text-base"
+            style={`background:${accent}`}
+          >
+            Send Your Message
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- "Find Us on the Map" + embedded Google Map (dark) -->
+  <div class="px-4">
+    <div class="mx-auto mt-12 max-w-[480px] text-center">
+      <h2 class="text-[39.2px] tracking-wide">Find Us on the Map</h2>
+
+      <div
+        class="mt-6 overflow-hidden rounded-2xl shadow-xl ring-1 ring-black/10"
+      >
+        <iframe
+          class="h-[260px] w-full"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          src={`https://www.google.com/maps?q=${place}&output=embed`}></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom info strip -->
+  <div class="mt-14 w-full bg-white py-10 text-slate-900">
+    <div class="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-6 sm:grid-cols-3">
+      <!-- Our Office -->
+      <div class="text-center">
+        <div
+          class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full text-white"
+        >
+          <svg
+            width="55"
+            height="55"
+            viewBox="0 0 55 55"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M27.4999 26.3543C25.9805 26.3543 24.5232 25.7507 23.4488 24.6763C22.3744 23.6019 21.7708 22.1446 21.7708 20.6252C21.7708 19.1057 22.3744 17.6485 23.4488 16.574C24.5232 15.4996 25.9805 14.896 27.4999 14.896C29.0194 14.896 30.4766 15.4996 31.5511 16.574C32.6255 17.6485 33.2291 19.1057 33.2291 20.6252C33.2291 21.3775 33.0809 22.1225 32.793 22.8176C32.5051 23.5127 32.0831 24.1443 31.5511 24.6763C31.0191 25.2083 30.3875 25.6303 29.6924 25.9182C28.9973 26.2061 28.2523 26.3543 27.4999 26.3543ZM27.4999 4.5835C23.2454 4.5835 19.1651 6.2736 16.1567 9.28199C13.1484 12.2904 11.4583 16.3706 11.4583 20.6252C11.4583 32.6564 27.4999 50.4168 27.4999 50.4168C27.4999 50.4168 43.5416 32.6564 43.5416 20.6252C43.5416 16.3706 41.8515 12.2904 38.8431 9.28199C35.8347 6.2736 31.7544 4.5835 27.4999 4.5835Z"
+              fill="#C8A646"></path>
+          </svg>
+        </div>
+        <h3 class="font-medium text-[21px]">Our Office</h3>
+        <p class="mt-2 text-[14.7px] text-slate-600">
+          Bhiraj Tower at EmQuartier,<br />
+          689 Sukhumvit Rd, Bangkok<br />
+          10110, Thailand
+        </p>
+      </div>
+
+      <!-- Follow Us -->
+      <a
+        href="https://www.linkedin.com/company/nextstep-engineering-software-solutions-co-ltd/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-center block transition-opacity hover:opacity-80"
+      >
+        <div
+          class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full text-white"
+        >
+          <svg
+            width="60"
+            height="60"
+            viewBox="0 0 60 60"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M45 7.5C46.9891 7.5 48.8968 8.29018 50.3033 9.6967C51.7098 11.1032 52.5 13.0109 52.5 15V45C52.5 46.9891 51.7098 48.8968 50.3033 50.3033C48.8968 51.7098 46.9891 52.5 45 52.5H15C13.0109 52.5 11.1032 51.7098 9.6967 50.3033C8.29018 48.8968 7.5 46.9891 7.5 45V15C7.5 13.0109 8.29018 11.1032 9.6967 9.6967C11.1032 8.29018 13.0109 7.5 15 7.5H45ZM20 25C19.337 25 18.7011 25.2634 18.2322 25.7322C17.7634 26.2011 17.5 26.837 17.5 27.5V40C17.5 40.663 17.7634 41.2989 18.2322 41.7678C18.7011 42.2366 19.337 42.5 20 42.5C20.663 42.5 21.2989 42.2366 21.7678 41.7678C22.2366 41.2989 22.5 40.663 22.5 40V27.5C22.5 26.837 22.2366 26.2011 21.7678 25.7322C21.2989 25.2634 20.663 25 20 25ZM27.5 22.5C26.837 22.5 26.2011 22.7634 25.7322 23.2322C25.2634 23.7011 25 24.337 25 25V40C25 40.663 25.2634 41.2989 25.7322 41.7678C26.2011 42.2366 26.837 42.5 27.5 42.5C28.163 42.5 28.7989 42.2366 29.2678 41.7678C29.7366 41.2989 30 40.663 30 40V30.85C30.7625 29.99 32.05 28.98 33.4825 28.3675C34.315 28.0125 35.5675 27.8675 36.4375 28.1425C36.7261 28.2157 36.9832 28.3807 37.17 28.6125C37.3 28.7875 37.5 29.1775 37.5 30V40C37.5 40.663 37.7634 41.2989 38.2322 41.7678C38.7011 42.2366 39.337 42.5 40 42.5C40.663 42.5 41.2989 42.2366 41.7678 41.7678C42.2366 41.2989 42.5 40.663 42.5 40V30C42.5 28.325 42.075 26.835 41.19 25.64C40.3756 24.5564 39.2359 23.7618 37.9375 23.3725C35.6825 22.665 33.185 23.0575 31.5175 23.7725C30.9837 24.0021 30.4636 24.2625 29.96 24.5525C29.8552 23.9765 29.5515 23.4555 29.102 23.0804C28.6524 22.7053 28.0855 22.4999 27.5 22.5ZM20 17.5C19.337 17.5 18.7011 17.7634 18.2322 18.2322C17.7634 18.7011 17.5 19.337 17.5 20C17.5 20.663 17.7634 21.2989 18.2322 21.7678C18.7011 22.2366 19.337 22.5 20 22.5C20.663 22.5 21.2989 22.2366 21.7678 21.7678C22.2366 21.2989 22.5 20.663 22.5 20C22.5 19.337 22.2366 18.7011 21.7678 18.2322C21.2989 17.7634 20.663 17.5 20 17.5Z"
+              fill="#C8A646"></path>
+          </svg>
+        </div>
+        <h3 class="font-medium text-[21px]">Follow Us</h3>
+        <p class="mt-2 text-[14.7px] text-slate-600">Linkedin</p>
+      </a>
+
+      <!-- Careers -->
+      <div class="text-center">
+        <div
+          class="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full text-white"
+        >
+          <svg
+            width="55"
+            height="55"
+            viewBox="0 0 55 55"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.9166 4.5835H32.0833C33.2988 4.5835 34.4646 5.06638 35.3242 5.92592C36.1837 6.78546 36.6666 7.95125 36.6666 9.16683V13.7502H45.8332C47.0488 13.7502 48.2146 14.233 49.0742 15.0926C49.9337 15.9521 50.4166 17.1179 50.4166 18.3335V43.5418C50.4166 44.7574 49.9337 45.9232 49.0742 46.7827C48.2146 47.6423 47.0488 48.1252 45.8332 48.1252H9.16658C7.95101 48.1252 6.78522 47.6423 5.92568 46.7827C5.06614 45.9232 4.58325 44.7574 4.58325 43.5418V18.3335C4.58325 15.7897 6.62284 13.7502 9.16658 13.7502H18.3333V9.16683C18.3333 6.62308 20.3728 4.5835 22.9166 4.5835ZM32.0833 13.7502V9.16683H22.9166V13.7502H32.0833Z"
+              fill="#C8A646"></path>
+          </svg>
+        </div>
+        <h3 class="font-medium text-[21px]">Careers at Nextstep</h3>
+        <p class="mt-2 text-[14.7px] text-slate-600">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pb-16"></div>
+</section>

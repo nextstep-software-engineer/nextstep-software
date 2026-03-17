@@ -1,0 +1,174 @@
+---
+// Props (optional): links, ctaLabel, ctaHref, logoSrc
+const { pathname } = Astro.url;
+
+const links: { href: string; label: string }[] = Astro.props.links ?? [
+  { href: "/services", label: "Services" },
+  { href: "/about", label: "About" },
+  { href: "/insights", label: "Insights" },
+  { href: "/careers", label: "Careers" },
+];
+
+const ctaLabel = Astro.props.ctaLabel ?? "Start Your Nextstep";
+const ctaHref = Astro.props.ctaHref ?? "/contact";
+const logoSrc = Astro.props.logoSrc ?? "/logo-nextstep.svg";
+---
+
+<style is:global>
+  @media (min-width: 1024px) {
+    .ns-nav {
+      grid-template-columns: 1fr auto 1fr;
+    }
+  }
+</style>
+
+<header class="text-white sticky top-0 z-[9999] bg-[#151824]">
+  <nav
+    class="ns-nav mx-auto max-w-screen-2xl flex items-center justify-between px-4 sm:px-6 lg:px-8 h-16"
+    aria-label="Main"
+  >
+    <!-- Left: Logo -->
+    <a
+      href="/"
+      class="inline-flex items-center gap-3 w-fit"
+      aria-label="Nextstep — Home"
+    >
+      <img
+        src={logoSrc}
+        alt="NEXTSTEP logo"
+        class="w-[140px] h-[55.3px]"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="sr-only">Nextstep Engineering Software Solutions</span>
+    </a>
+
+    <!-- Right: Links + CTA + Mobile menu -->
+    <div class="ml-auto flex items-center gap-8">
+      <!-- Links (hidden on mobile) -->
+      <ul class="hidden md:flex items-center gap-8">
+        {
+          links.map(({ href, label }) => {
+            const active =
+              href === "/" ? pathname === "/" : pathname.startsWith(href);
+            return (
+              <li>
+                <a
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  class={[
+                    "tracking-wide transition-colors text-white/85 hover:text-white",
+                    "focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded-md",
+                    active && "text-white",
+                  ].join(" ")}
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+
+      <!-- CTA (hidden on small screens) -->
+      <a
+        href={ctaHref}
+        class="hidden sm:inline-flex items-center rounded-full border border-[#C9A646] px-4 py-1.5 text-[#C9A646] text-[15px] tracking-wide transition
+             hover:bg-[#C9A646]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A646]/70"
+      >
+        {ctaLabel}
+      </a>
+
+      <!-- Hamburger (only visible on mobile) -->
+      <button
+        id="ns-menu-button"
+        class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/5
+             hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/70"
+        aria-label="Open menu"
+        aria-controls="ns-mobile-menu"
+        aria-expanded="false"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile sheet -->
+  <div
+    id="ns-mobile-menu"
+    class="md:hidden hidden border-t border-white/10 bg-[#151922] px-4 sm:px-6"
+  >
+    <ul class="py-3 space-y-1">
+      {
+        links.map(({ href, label }) => {
+          const active =
+            href === "/" ? pathname === "/" : pathname.startsWith(href);
+          return (
+            <li>
+              <a
+                href={href}
+                class={[
+                  "block rounded-md px-2 py-2 text-[16px]",
+                  "text-white/90 hover:bg-white/5 focus:bg-white/5 focus:outline-none",
+                  active && "text-white",
+                ].join(" ")}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })
+      }
+      <li class="pt-1">
+        <a
+          href={ctaHref}
+          class="inline-flex w-full items-center justify-center rounded-full border border-[#C9A646] px-4 py-2 text-[#C9A646]
+                 hover:bg-[#C9A646]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A646]/70"
+        >
+          {ctaLabel}
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  // Tiny, framework-free toggler with accessibility niceties
+  const btn = document.getElementById("ns-menu-button");
+  const menu = document.getElementById("ns-mobile-menu");
+  if (btn && menu) {
+    const close = () => {
+      menu.classList.add("hidden");
+      btn.setAttribute("aria-expanded", "false");
+    };
+    const open = () => {
+      menu.classList.remove("hidden");
+      btn.setAttribute("aria-expanded", "true");
+    };
+    const toggle = () => (menu.classList.contains("hidden") ? open() : close());
+
+    btn.addEventListener("click", toggle);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+    // Close when clicking outside
+    document.addEventListener("click", (e) => {
+      const target = e.target as Node | null;
+
+      if (target && !menu.contains(target) && !btn.contains(target)) {
+        close();
+      }
+    });
+  }
+</script>
