@@ -1,7 +1,5 @@
 ---
 const accent = "#C9A646"; // gold accent
-// Optional: central map location (for the fallback embed)
-const place = encodeURIComponent("Bhiraj Tower at EmQuartier, Bangkok");
 ---
 
 <section class="min-h-screen text-white antialiased">
@@ -66,12 +64,19 @@ const place = encodeURIComponent("Bhiraj Tower at EmQuartier, Bangkok");
       <div
         class="mt-6 overflow-hidden rounded-2xl shadow-xl ring-1 ring-black/10"
       >
-        <iframe
-          class="h-[260px] w-full"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen
-          src={`https://www.google.com/maps?q=${place}&output=embed`}></iframe>
+        <a
+          href="https://maps.google.com/?q=Nextstep+Engineering+Software+Solutions+Co.+Ltd.+Bangkok"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block"
+        >
+          <img
+            src="/map-screenshot.jpg"
+            alt="Nextstep Engineering Software Solutions Co., Ltd. location on Google Maps"
+            class="h-[260px] w-full object-cover"
+            loading="lazy"
+          />
+        </a>
       </div>
     </div>
   </div>
