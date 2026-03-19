@@ -42,13 +42,15 @@ import "../styles/global.css";
     <script>
       const banner = document.getElementById("cookie-banner");
       const overlay = document.getElementById("cookie-overlay");
-      if (localStorage.getItem("cookieNotice")) {
+      let accepted = false;
+      try { accepted = !!localStorage.getItem("cookieNotice"); } catch (_) {}
+      if (accepted) {
         banner?.remove();
         overlay?.remove();
       } else {
         document.body.style.overflow = "hidden";
         banner?.querySelector("button")?.addEventListener("click", () => {
-          localStorage.setItem("cookieNotice", "true");
+          try { localStorage.setItem("cookieNotice", "true"); } catch (_) {}
           document.body.style.overflow = "";
           banner?.remove();
           overlay?.remove();
