@@ -75,6 +75,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       ctaHref="/#contact"
       ctaLabel="Start Your Nextstep"
       links={[
+        { href: "/#our-team", label: "Our Team" },
         { href: "/#services", label: "Services" },
         { href: "/#about", label: "About" },
         { href: "/#contact", label: "Contact" },
@@ -83,7 +84,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       ]}
     />
     <slot />
-    <Footer />
+    {/* <Footer /> */}
     <div id="cookie-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9998;"></div>
     <div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;background:#151824;border-top:1px solid rgba(201,166,70,0.3);color:#fff;padding:15px;font-size:14px;display:flex;justify-content:space-between;align-items:center;z-index:9999;">
       <span>

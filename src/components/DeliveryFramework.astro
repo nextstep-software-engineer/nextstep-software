@@ -1,0 +1,216 @@
+---
+// Our Delivery Framework Section — 4-phase circular diagram
+const leftPhases = [
+  {
+    number: "01",
+    title: "Discover",
+    items: [
+      "Understand business goals",
+      "Assess current landscape",
+      "Identify opportunities",
+      "Define success metrics",
+    ],
+  },
+  {
+    number: "04",
+    title: "Operate & Optimize",
+    items: [
+      "Monitor and observe",
+      "Optimize performance",
+      "Manage security",
+      "Drive continuous improvement",
+    ],
+  },
+];
+
+const rightPhases = [
+  {
+    number: "02",
+    title: "Design",
+    items: [
+      "Solution architecture",
+      "Cloud strategy",
+      "Security & compliance",
+      "Implementation roadmap",
+    ],
+  },
+  {
+    number: "03",
+    title: "Build & Automate",
+    items: [
+      "Develop and integrate",
+      "Automate infrastructure",
+      "Implement CI/CD",
+      "Test and validate",
+    ],
+  },
+];
+---
+
+<section class="relative py-16 sm:py-20 lg:py-24 bg-[#F7F8FA] overflow-hidden">
+  <!-- Background photo layer: bleeds to the right/top/bottom edges and fades
+       into the light bg on its left side, like the mockup. -->
+  <div
+    class="absolute inset-y-0 right-0 w-full lg:w-[40%] bg-cover bg-center hidden lg:block"
+    style="background-image: linear-gradient(to right, #F7F8FA 0%, rgba(247,248,250,0.7) 15%, rgba(247,248,250,0) 40%), url('/delivery-framework.webp');"
+  >
+  </div>
+
+  <div class="relative z-10 max-w-screen-2xl px-4 sm:px-6 lg:px-8 mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-12 lg:gap-16 items-center">
+      <!-- Left: heading + phases + circular diagram -->
+      <div>
+        <div class="mb-12 sm:mb-16">
+          <h2 class="!text-[24.5px] text-black">Our Delivery Framework</h2>
+          <p class="mt-4 !text-[15.4px] text-[#5A5A5A]">
+            A proven 4-phase approach to deliver continuous value.
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col sm:flex-row sm:flex-wrap md:flex-nowrap items-center justify-center gap-10 sm:gap-8 lg:gap-12"
+        >
+          <!-- Left phases: Discover, Operate & Optimize -->
+          <div class="flex flex-col gap-10 order-2 sm:order-1 shrink-0">
+            {
+              leftPhases.map((phase) => (
+                <div class="text-center sm:text-left">
+                  <h3 class="!text-[16.8px] text-black">
+                    <span class="text-[#2563EB]">{phase.number}</span>{" "}
+                    {phase.title}
+                  </h3>
+                  <ul class="mt-3 space-y-1.5 !text-[13px] text-[#5A5A5A]">
+                    {phase.items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- Center circular diagram (Chart.js doughnut chart) -->
+          <div class="flex justify-center order-1 sm:order-2 shrink-0">
+            <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex-shrink-0">
+              <canvas
+                id="delivery-framework-chart"
+                width="288"
+                height="288"
+                class="w-full h-full"
+              ></canvas>
+
+              <div
+                class="absolute inset-0 m-auto w-[58%] h-[58%] rounded-full bg-white flex items-center justify-center text-center p-4 pointer-events-none"
+              >
+                <span class="!text-[14px] font-medium leading-snug text-black">
+                  Continuous<br />Value<br />Delivery
+                </span>
+              </div>
+
+              <!-- Icons embedded inside each ring segment: Discover (search),
+                   Design (book), Build & Automate (gear), Operate & Optimize (chart) -->
+              <div
+                class="absolute w-6 h-6 text-white pointer-events-none"
+                style="top:21.7%; left:21.7%; transform: translate(-50%, -50%);"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-full drop-shadow">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.803 15.803L20.25 20.25m-3.622-9.28a6.75 6.75 0 11-13.5 0 6.75 6.75 0 0113.5 0z" />
+                </svg>
+              </div>
+              <div
+                class="absolute w-6 h-6 text-white pointer-events-none"
+                style="top:21.7%; left:78.3%; transform: translate(-50%, -50%);"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-full drop-shadow">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                </svg>
+              </div>
+              <div
+                class="absolute w-6 h-6 text-white pointer-events-none"
+                style="top:78.3%; left:78.3%; transform: translate(-50%, -50%);"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-full drop-shadow">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.325.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.955.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.019-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.28z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div
+                class="absolute w-6 h-6 text-white pointer-events-none"
+                style="top:78.3%; left:21.7%; transform: translate(-50%, -50%);"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-full h-full drop-shadow">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.306a11.95 11.95 0 015.814-5.518l2.74-1.22m0 0l-5.94-2.281m5.94 2.28l-2.28 5.941" />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right phases: Design, Build & Automate -->
+          <div class="flex flex-col gap-10 order-3 shrink-0">
+            {
+              rightPhases.map((phase) => (
+                <div class="text-center sm:text-left">
+                  <h3 class="!text-[16.8px] text-black">
+                    <span class="text-[#2563EB]">{phase.number}</span>{" "}
+                    {phase.title}
+                  </h3>
+                  <ul class="mt-3 space-y-1.5 !text-[13px] text-[#5A5A5A]">
+                    {phase.items.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Right column stays empty on top; the photo lives in the absolute
+           layer behind, matching the mockup's edge-to-edge bleed -->
+      <div class="hidden lg:block" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import {
+    Chart,
+    DoughnutController,
+    ArcElement,
+  } from "chart.js";
+
+  Chart.register(DoughnutController, ArcElement);
+
+  const canvas = document.getElementById(
+    "delivery-framework-chart"
+  ) as HTMLCanvasElement | null;
+
+  if (canvas) {
+    new Chart(canvas, {
+      type: "doughnut",
+      data: {
+        // Clockwise from 12 o'clock: top-right, bottom-right, bottom-left, top-left
+        labels: ["Design", "Build & Automate", "Operate & Optimize", "Discover"],
+        datasets: [
+          {
+            data: [1, 1, 1, 1],
+            backgroundColor: ["#7C3AED", "#14B8A6", "#1E3A8A", "#2563EB"],
+            borderColor: "#F7F8FA",
+            borderWidth: 3,
+            hoverOffset: 0,
+          },
+        ],
+      },
+      options: {
+        cutout: "60%",
+        responsive: false,
+        animation: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false },
+        },
+      },
+    });
+  }
+</script>

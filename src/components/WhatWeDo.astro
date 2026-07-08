@@ -1,0 +1,80 @@
+---
+// What We Do Section — 6 service categories
+const services = [
+  {
+    title: "Cloud-Native Development",
+    description:
+      "Build scalable, resilient applications using modern cloud technologies.",
+    path: "M6.75 18a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3.75 3.75 0 014.694 4.615A4.5 4.5 0 0118 18H6.75z",
+  },
+  {
+    title: "DevOps Transformation",
+    description:
+      "Automate delivery pipelines and operations for speed and reliability.",
+    path: "M16.023 9.348h4.992v-4.99M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99",
+  },
+  {
+    title: "Cloud Migration & Modernization",
+    description:
+      "Migrate and modernize legacy systems to secure, scalable clouds.",
+    path: "M12 16.5V9.75m0 0l-3 3m3-3l3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3.75 3.75 0 014.694 4.615 4.5 4.5 0 01-1.242 8.49H6.75z",
+  },
+  {
+    title: "Platform Engineering",
+    description: "Build internal developer platforms to boost productivity.",
+    path: "M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9",
+  },
+  {
+    title: "Infrastructure as Code",
+    description:
+      "Automate infrastructure provisioning for consistency and scale.",
+    path: "M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5",
+  },
+  {
+    title: "Security & Reliability Engineering",
+    description:
+      "Embed security, monitoring, and reliability into every step of delivery.",
+    path: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z",
+  },
+];
+---
+
+<section id="what-we-do" class="pt-4 sm:pt-6 lg:pt-8 pb-16 sm:pb-20 lg:pb-24 bg-white">
+  <div class="max-w-screen-2xl px-4 sm:px-6 lg:px-8 mx-auto w-full">
+    <div class="mb-10 sm:mb-12">
+      <h2 class="!text-[24.5px] text-black">What We Do</h2>
+      <p class="mt-4 !text-[15.4px] text-[#5A5A5A]">
+        End-to-end engineering solutions to build, modernize, and operate
+        scalable software systems.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6 lg:gap-4">
+      {
+        services.map((service) => (
+          <div class="flex flex-col items-center text-center gap-4 p-6 bg-white border border-[#DBDBDA] rounded-[20px]">
+            <div class="bg-[#EAF0FE] rounded-[20px] w-[49px] h-[49px] flex items-center justify-center text-[#2563EB]">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d={service.path}
+                />
+              </svg>
+            </div>
+            <h3 class="!text-[15.4px] text-black">{service.title}</h3>
+            <p class="!text-[12.6px] text-[#5A5A5A] leading-relaxed">
+              {service.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
