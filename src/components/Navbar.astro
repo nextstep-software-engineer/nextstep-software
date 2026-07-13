@@ -1,5 +1,5 @@
 ---
-// Props (optional): links, ctaLabel, ctaHref, logoSrc
+// Props (optional): links, logoSrc
 const { pathname } = Astro.url;
 
 const links: { href: string; label: string }[] = Astro.props.links ?? [
@@ -9,8 +9,6 @@ const links: { href: string; label: string }[] = Astro.props.links ?? [
   { href: "/careers", label: "Careers" },
 ];
 
-const ctaLabel = Astro.props.ctaLabel ?? "Start Your Nextstep";
-const ctaHref = Astro.props.ctaHref ?? "/contact";
 const logoSrc = Astro.props.logoSrc ?? "/logo-nextstep.svg";
 ---
 
@@ -70,15 +68,6 @@ const logoSrc = Astro.props.logoSrc ?? "/logo-nextstep.svg";
         }
       </ul>
 
-      <!-- CTA (hidden on small screens) -->
-      <a
-        href={ctaHref}
-        class="hidden sm:inline-flex items-center rounded-full border border-[#C9A646] px-4 py-1.5 text-[#C9A646] text-[15px] tracking-wide transition
-             hover:bg-[#C9A646]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A646]/70"
-      >
-        {ctaLabel}
-      </a>
-
       <!-- Hamburger (only visible on mobile) -->
       <button
         id="ns-menu-button"
@@ -130,15 +119,6 @@ const logoSrc = Astro.props.logoSrc ?? "/logo-nextstep.svg";
           );
         })
       }
-      <li class="pt-1">
-        <a
-          href={ctaHref}
-          class="inline-flex w-full items-center justify-center rounded-full border border-[#C9A646] px-4 py-2 text-[#C9A646]
-                 hover:bg-[#C9A646]/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#C9A646]/70"
-        >
-          {ctaLabel}
-        </a>
-      </li>
     </ul>
   </div>
 </header>

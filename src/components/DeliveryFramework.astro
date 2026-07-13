@@ -94,8 +94,6 @@ const rightPhases = [
             <div class="relative w-64 h-64 sm:w-72 sm:h-72 flex-shrink-0">
               <canvas
                 id="delivery-framework-chart"
-                width="288"
-                height="288"
                 class="w-full h-full"
               ></canvas>
 
@@ -204,7 +202,8 @@ const rightPhases = [
       },
       options: {
         cutout: "60%",
-        responsive: false,
+        responsive: true,
+        maintainAspectRatio: false,
         animation: false,
         plugins: {
           legend: { display: false },

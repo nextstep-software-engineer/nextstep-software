@@ -72,15 +72,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   <body>
     <Navbar
       logoSrc="/logo-nextstep.svg"
-      ctaHref="/#contact"
-      ctaLabel="Start Your Nextstep"
       links={[
         { href: "/#our-team", label: "Our Team" },
+        { href: "/#approach", label: "Approach" },
         { href: "/#services", label: "Services" },
-        { href: "/#about", label: "About" },
         { href: "/#contact", label: "Contact" },
-        // { href: "/insights", label: "Insights" },
-        // { href: "/careers", label: "Careers" },
       ]}
     />
     <slot />
