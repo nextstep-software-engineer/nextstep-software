@@ -1,84 +1,25 @@
 ---
-// Trust Bar Section — logos + key stats
+// Trust Bar — logo strip of platforms/partners we build on, directly on the
+// section background (matching the mockup — no card/pill wrapper).
 ---
 
-<section class="py-10 sm:py-12 lg:py-14 bg-white">
-  <div class="max-w-screen-2xl px-4 sm:px-6 lg:px-8 mx-auto w-full">
-    <div
-      class="flex flex-col lg:flex-row items-center gap-10 lg:gap-0 lg:divide-x lg:divide-[#DBDBDA]"
-    >
-      <!-- Logos -->
-      <div
-        class="flex flex-col items-center lg:items-start gap-6 w-full lg:w-auto lg:pr-12"
-      >
-        <span
-          class="!text-[12.6px] tracking-widest text-[#8A8A8A] uppercase"
-        >
-          Trusted by Innovative Companies
-        </span>
-        <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-10">
-          <span class="inline-flex items-center gap-1.5 !text-[15.4px] font-medium text-[#5A5A5A]">
-            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke-width="1.8">
-              <path stroke="#4285F4" stroke-linecap="round" stroke-linejoin="round" d="M15.5 18H8a4.5 4.5 0 01-1.41-8.775" />
-              <path stroke="#34A853" stroke-linecap="round" stroke-linejoin="round" d="M6.59 9.225A5.25 5.25 0 0116.823 6.895" />
-              <path stroke="#FBBC05" stroke-linecap="round" stroke-linejoin="round" d="M16.823 6.895a3.75 3.75 0 014.694 4.615" />
-              <path stroke="#EA4335" stroke-linecap="round" stroke-linejoin="round" d="M21.517 11.51A4.5 4.5 0 0118 18h-2.5" />
-            </svg>
-            Google Cloud
-          </span>
-          <img
-            src="/tech-svg/aws.svg"
-            alt="AWS"
-            class="h-8 w-auto scale-[0.9]"
-          />
-          <img
-            src="/tech-svg/azure.svg"
-            alt="Microsoft Azure"
-            class="h-8 w-auto scale-[0.9]"
-          />
-          <img
-            src="/tech-svg/docker.svg"
-            alt="Docker"
-            class="h-8 w-auto scale-[0.9]"
-          />
-        </div>
-      </div>
+<section class="py-10 sm:py-12 bg-[#F9FBFE]">
+  <div class="max-w-screen-2xl px-6 sm:px-10 lg:px-16 xl:px-20 mx-auto w-full">
+    <p class="text-center !text-[12.6px] tracking-[0.15em] text-[#2563EB] uppercase font-semibold mb-8">
+      Trusted by Innovative Organizations Worldwide
+    </p>
 
-      <!-- Stats -->
-      <div
-        class="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-10 w-full lg:w-auto lg:pl-12"
-      >
-        <div class="text-center lg:text-left">
-          <div class="!text-[33.6px] font-medium text-[#2563EB] leading-none">
-            5+
-          </div>
-          <div class="mt-2 !text-[13px] text-[#5A5A5A]">
-            World-Leading Industries
-          </div>
-        </div>
-        <div class="text-center lg:text-left">
-          <div class="!text-[33.6px] font-medium text-[#2563EB] leading-none">
-            25+
-          </div>
-          <div class="mt-2 !text-[13px] text-[#5A5A5A]">
-            Years of Experience
-          </div>
-        </div>
-        <div class="text-center lg:text-left">
-          <div class="!text-[33.6px] font-medium text-[#2563EB] leading-none">
-            50+
-          </div>
-          <div class="mt-2 !text-[13px] text-[#5A5A5A]">
-            Client Projects
-          </div>
-        </div>
-        <div class="text-center lg:text-left">
-          <div class="!text-[33.6px] font-medium text-[#2563EB] leading-none">
-            100%
-          </div>
-          <div class="mt-2 !text-[13px] text-[#5A5A5A]">Reliability</div>
-        </div>
-      </div>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 sm:gap-x-14">
+      <img src="/middle-section-svg/logos_microsoft.svg" alt="Microsoft" class="h-6 sm:h-7 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+      <img src="/middle-section-svg/logos_aws.svg" alt="AWS" class="h-9 sm:h-10 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+      <img src="/tech-svg/azure.svg" alt="Microsoft Azure" class="h-7 sm:h-8 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+      <img src="/middle-section-svg/logos_google.svg" alt="Google Cloud" class="h-6 sm:h-7 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+      <img src="/middle-section-svg/logos_sap.svg" alt="SAP" class="h-9 sm:h-10 w-auto opacity-90 hover:opacity-100 transition-opacity" />
+
+      <!-- Siemens — no logo asset exists for this one, so it's styled text -->
+      <span class="!text-[19px] font-semibold tracking-wide text-[#009999] opacity-90 hover:opacity-100 transition-opacity">
+        SIEMENS
+      </span>
     </div>
   </div>
 </section>

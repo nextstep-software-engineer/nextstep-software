@@ -1,0 +1,91 @@
+---
+// Success Stories & Insights — case study cards + resources list
+const caseStudies = [
+  {
+    tag: "Case Study",
+    title: "Digital Platform Modernization for Global Enterprise",
+    description: "How we transformed legacy systems into a scalable, cloud-native platform.",
+    image: "/case-study-digital-platform.jpg",
+  },
+  {
+    tag: "Case Study",
+    title: "AI-Powered Analytics Platform Drives Business Growth",
+    description: "Enabling data-driven decisions and improving operational efficiency.",
+    image: "/case-study-ai-analytics.jpg",
+  },
+  {
+    tag: "Case Study",
+    title: "IoT Solution Improves Asset Performance by 40%",
+    description: "Real-time monitoring and predictive intelligence for better outcomes.",
+    image: "/case-study-iot.jpg",
+  },
+];
+
+const resources = [
+  { label: "Whitepapers", href: "#" },
+  { label: "Blog", href: "#" },
+  { label: "Webinars", href: "#" },
+  { label: "Downloads", href: "#" },
+];
+---
+
+<section id="case-studies" class="scroll-mt-16 py-8 sm:py-10 bg-[#F9FBFE]">
+  <div class="max-w-screen-2xl px-6 sm:px-10 lg:px-16 xl:px-20 mx-auto w-full">
+    <p class="text-center !text-[12.6px] tracking-[0.15em] text-[#2563EB] uppercase font-medium mb-6">
+      Success Stories &amp; Insights
+    </p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        caseStudies.map((item) => (
+          <a href="#" class="group block bg-white border border-[#DBDBDA] rounded-[14px] overflow-hidden hover:border-[#2563EB]/40 transition-colors">
+            <div
+              class="h-24 w-full bg-cover bg-center bg-[#DDE6FB]"
+              style={`background-image: url('${item.image}');`}
+            />
+            <div class="p-4 flex flex-col gap-1.5">
+              <span class="!text-[11px] tracking-wide text-[#2563EB] uppercase font-medium">
+                {item.tag}
+              </span>
+              <h3 class="!text-[14.5px] text-black leading-snug">{item.title}</h3>
+              <p class="!text-[12.6px] text-[#5A5A5A] leading-relaxed">{item.description}</p>
+              <span class="mt-1 inline-flex items-center gap-1.5 !text-[12.6px] font-medium text-[#2563EB] group-hover:text-[#1d4fd1]">
+                Read More
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        ))
+      }
+
+      <!-- Resources -->
+      <div id="resources" class="scroll-mt-16 p-4 bg-white border border-[#DBDBDA] rounded-[14px] flex flex-col gap-3">
+        <span class="!text-[11px] tracking-wide text-[#2563EB] uppercase font-medium">
+          Resources
+        </span>
+        <ul class="flex flex-col gap-3">
+          {
+            resources.map((r) => (
+              <li>
+                <a href={r.href} class="inline-flex items-center gap-2 !text-[13.5px] text-black hover:text-[#2563EB] transition-colors">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4 text-[#2563EB]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                  </svg>
+                  {r.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a href="#" class="mt-auto inline-flex items-center gap-1.5 !text-[12.6px] font-medium text-[#2563EB] hover:text-[#1d4fd1]">
+          Explore All Resources
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

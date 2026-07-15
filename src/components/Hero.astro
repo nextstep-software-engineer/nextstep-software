@@ -1,53 +1,61 @@
 ---
-
+// Hero — light theme with the isometric capability diagram cropped from the mockup on the right.
 ---
 
-<section class="relative text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
-  <!-- Background photo layer: bleeds to the right/bottom edges and fades into
-       the dark navy on its left side, like the mockup. -->
-  <div
-    class="absolute inset-y-0 right-0 w-full lg:w-[60%] bg-cover bg-top hidden lg:block"
-    style="background-image: linear-gradient(to right, #151824 0%, rgba(21,24,36,0.55) 20%, rgba(21,24,36,0) 45%), linear-gradient(to bottom, #151824 0%, rgba(21,24,36,0) 14%), url('/hero-team.webp');"
-  >
-  </div>
-
-  <div class="relative z-10 max-w-screen-2xl px-4 sm:px-6 lg:px-8 mx-auto w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+<section class="relative bg-[#F9FBFE] py-16 sm:py-20 lg:py-24 overflow-hidden">
+  <div class="relative z-10 max-w-screen-2xl px-6 sm:px-10 lg:px-16 xl:px-20 mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
       <!-- Left Content -->
-      <div class="flex flex-col gap-8 text-center lg:text-left min-w-0">
-        <h1 class="!text-[28px] sm:!text-[33px] lg:!text-[39.9px] leading-tight break-words">
-          Engineering the Next.<br />Delivering What Matters.
-        </h1>
-
-        <p class="!text-[16.1px] text-[#E8E8E8] max-w-2xl mx-auto lg:mx-0">
-          We build cloud-native software and DevOps solutions that accelerate
-          innovation, improve reliability, and drive business outcomes.
+      <div class="flex flex-col gap-6 text-center lg:text-left">
+        <p class="!text-[12.6px] tracking-[0.15em] text-[#2563EB] uppercase font-medium">
+          Engineering Expertise. Technology Innovation. Real Impact.
         </p>
 
-        <div
-          class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-        >
+        <h1 class="!text-[32px] sm:!text-[40px] lg:!text-[42px] xl:!text-[48px] leading-[1.15] text-[#0B1220]">
+          Engineering Smarter<br />
+          <span class="text-[#2563EB]">Digital Solutions</span>
+        </h1>
+
+        <p class="!text-[15.4px] text-[#5A5A5A] max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          NextStep Engineering combines engineering expertise with cutting-edge
+          technology to deliver engineering software, Product Lifecycle
+          Management (PLM), cloud engineering, AI &amp; analytics, custom
+          software development, DevOps, and Industrial IoT solutions that help
+          organizations innovate and achieve sustainable growth.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-2">
           <a
             href="/#services"
-            class="inline-flex items-center justify-center gap-2 px-4 py-2 !text-[15.4px] bg-[#2563EB] rounded-[20px] hover:bg-[#1d4fd1] transition-colors"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 !text-[15.4px] font-medium text-white bg-[#2563EB] rounded-xl hover:bg-[#1d4fd1] transition-colors"
           >
-            Our Services
+            Explore Our Solutions
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
           </a>
           <a
-            href="/#contact"
-            class="inline-flex items-center justify-center px-4 py-2 !text-[15.4px] text-white border border-white rounded-[20px] hover:bg-white/10 transition-colors"
+            href="/contact"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 !text-[15.4px] font-medium text-[#0B1220] border border-[#0B1220]/25 rounded-xl hover:bg-[#0B1220]/5 transition-colors"
           >
-            Talk to an Expert
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+            </svg>
+            Book a Consultation
           </a>
         </div>
       </div>
 
-      <!-- Right column stays empty on top; the photo lives in the absolute
-           layer behind, matching the mockup's edge-to-edge bleed -->
-      <div class="hidden lg:block" aria-hidden="true"></div>
+      <!-- Right: isometric capability diagram (cropped from the Home.png mockup) -->
+      <div class="w-full max-w-[480px] sm:max-w-[560px] mx-auto">
+        <img
+          src="/hero-diagram.webp"
+          alt="NextStep capability diagram: AI & Analytics, Cloud Engineering, DevOps, Industrial IoT, Software Development, PLM, Digital Transformation"
+          class="w-full h-auto"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
     </div>
   </div>
 </section>
