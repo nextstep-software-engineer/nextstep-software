@@ -60,7 +60,7 @@ const isLight = theme === "light";
     <!-- Right: Links + CTA + Mobile menu -->
     <div class="ml-auto flex items-center gap-8">
       <!-- Links (hidden on mobile) -->
-      <ul class="hidden lg:flex items-center gap-5 xl:gap-7">
+      <ul class="hidden lg:flex items-center gap-5 xl:gap-7 relative">
         {
           links.map(({ href, label, dropdown }) => {
             const active =
@@ -69,13 +69,17 @@ const isLight = theme === "light";
               <li>
                 <a
                   href={href}
+                  data-ns-link
+                  data-active={active ? "true" : "false"}
+                  data-active-class={isLight ? "text-[#2563EB]" : "text-white"}
+                  data-inactive-class={isLight ? "text-[#0B1220]/70" : "text-white/85"}
                   aria-current={active ? "page" : undefined}
                   class:list={[
-                    "relative inline-flex items-center gap-1 !text-[13.5px] font-semibold tracking-wide transition-colors whitespace-nowrap",
+                    "relative inline-flex items-center gap-1 !text-[16px] font-semibold tracking-wide transition-colors whitespace-nowrap",
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded-md",
                     isLight
-                      ? ["text-[#0B1220]/70 hover:text-[#0B1220]", active && "text-[#2563EB]"]
-                      : ["text-white/85 hover:text-white", active && "text-white"],
+                      ? ["hover:text-[#0B1220]", active ? "text-[#2563EB]" : "text-[#0B1220]/70"]
+                      : ["hover:text-white", active ? "text-white" : "text-white/85"],
                   ]}
                 >
                   {label}
@@ -84,25 +88,25 @@ const isLight = theme === "light";
                       <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                   )}
-                  {active && (
-                    <span
-                      class:list={[
-                        "absolute -left-2 -right-2 -bottom-3 h-[2px] rounded-full",
-                        isLight ? "bg-[#2563EB]" : "bg-[#8FB3FA]",
-                      ]}
-                    />
-                  )}
                 </a>
               </li>
             );
           })
         }
+        <!-- Single sliding underline, repositioned via JS to sit under whichever link is active -->
+        <span
+          id="ns-underline-bar"
+          class:list={[
+            "absolute -bottom-3 h-[2px] rounded-full pointer-events-none opacity-0",
+            isLight ? "bg-[#2563EB]" : "bg-[#8FB3FA]",
+          ]}
+        />
       </ul>
 
       <!-- CTA button (hidden on mobile, shown in mobile sheet instead) -->
       <a
         href={ctaHref}
-        class="hidden lg:inline-flex items-center justify-center px-5 py-2 !text-[13.5px] font-medium text-white bg-[#2563EB] rounded-xl hover:bg-[#1d4fd1] transition-colors"
+        class="hidden lg:inline-flex items-center justify-center px-5 py-2 !text-[16px] font-medium text-white bg-[#2563EB] rounded-xl hover:bg-[#1d4fd1] transition-colors"
       >
         {ctaLabel}
       </a>
@@ -177,7 +181,7 @@ const isLight = theme === "light";
       <li class="pt-2">
         <a
           href={ctaHref}
-          class="inline-flex items-center justify-center w-full px-5 py-2.5 !text-[15px] font-medium text-white bg-[#2563EB] rounded-xl hover:bg-[#1d4fd1] transition-colors"
+          class="inline-flex items-center justify-center w-full px-5 py-2.5 !text-[16px] font-medium text-white bg-[#2563EB] rounded-xl hover:bg-[#1d4fd1] transition-colors"
         >
           {ctaLabel}
         </a>
@@ -214,4 +218,40 @@ const isLight = theme === "light";
       }
     });
   }
+
+  // Move the active-link underline to whichever link was just clicked,
+  // instead of waiting for the next page load to resolve it. A single bar
+  // slides between links (via left/width) rather than each link owning its
+  // own underline, so the change reads as motion instead of a jump-cut.
+  const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-ns-link]");
+  const bar = document.getElementById("ns-underline-bar");
+
+  const placeBar = (link: HTMLAnchorElement, animate: boolean) => {
+    if (!bar) return;
+    bar.style.transition = animate ? "left 0.25s ease, width 0.25s ease, opacity 0.25s ease" : "none";
+    bar.style.left = `${link.offsetLeft}px`;
+    bar.style.width = `${link.offsetWidth}px`;
+    bar.style.opacity = "1";
+  };
+
+  const initialActive = Array.from(navLinks).find((l) => l.dataset.active === "true");
+  if (initialActive) {
+    // Position instantly on load — nothing to animate from yet.
+    requestAnimationFrame(() => placeBar(initialActive, false));
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      placeBar(link, true);
+      navLinks.forEach((other) => {
+        const activeClass = other.dataset.activeClass ?? "";
+        const inactiveClass = other.dataset.inactiveClass ?? "";
+        const isClicked = other === link;
+
+        activeClass.split(" ").forEach((c) => c && other.classList.toggle(c, isClicked));
+        inactiveClass.split(" ").forEach((c) => c && other.classList.toggle(c, !isClicked));
+        other.dataset.active = isClicked ? "true" : "false";
+      });
+    });
+  });
 </script>

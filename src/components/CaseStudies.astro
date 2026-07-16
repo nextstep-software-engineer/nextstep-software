@@ -1,23 +1,22 @@
 ---
 // Success Stories & Insights — case study cards + resources list
+// Thumbnails use a standard designer image-placeholder pattern (diagonal
+// cross + photo icon) since real case-study photography isn't available yet.
 const caseStudies = [
   {
     tag: "Case Study",
     title: "Digital Platform Modernization for Global Enterprise",
     description: "How we transformed legacy systems into a scalable, cloud-native platform.",
-    image: "/case-study-digital-platform.jpg",
   },
   {
     tag: "Case Study",
     title: "AI-Powered Analytics Platform Drives Business Growth",
     description: "Enabling data-driven decisions and improving operational efficiency.",
-    image: "/case-study-ai-analytics.jpg",
   },
   {
     tag: "Case Study",
     title: "IoT Solution Improves Asset Performance by 40%",
     description: "Real-time monitoring and predictive intelligence for better outcomes.",
-    image: "/case-study-iot.jpg",
   },
 ];
 
@@ -38,17 +37,23 @@ const resources = [
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
       {
         caseStudies.map((item) => (
-          <a href="#" class="group block bg-white border border-[#DBDBDA] rounded-[14px] overflow-hidden hover:border-[#2563EB]/40 transition-colors">
-            <div
-              class="h-24 w-full bg-cover bg-center bg-[#DDE6FB]"
-              style={`background-image: url('${item.image}');`}
-            />
-            <div class="p-4 flex flex-col gap-1.5">
+          <a href="#" class="group flex bg-white border border-[#DBDBDA] rounded-[14px] overflow-hidden hover:border-[#2563EB]/40 transition-colors">
+            <div class="relative w-32 shrink-0 flex items-center justify-center overflow-hidden bg-[#EEF2FC]">
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="absolute inset-0 w-full h-full">
+                <path d="M0 0L100 100M100 0L0 100" stroke="#D7E0F5" stroke-width="1.5" />
+              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#A9B8DC" stroke-width="1.5" class="relative w-9 h-9">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 8h.01M3 6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="m3 16l5-5c.928-.893 2.072-.893 3 0l5 5" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="m14 14l1-1c.928-.893 2.072-.893 3 0l3 3" />
+              </svg>
+            </div>
+            <div class="p-3 flex flex-col gap-1 min-w-0">
               <span class="!text-[11px] tracking-wide text-[#2563EB] uppercase font-medium">
                 {item.tag}
               </span>
-              <h3 class="!text-[14.5px] text-black leading-snug">{item.title}</h3>
-              <p class="!text-[12.6px] text-[#5A5A5A] leading-relaxed">{item.description}</p>
+              <h3 class="!text-[14.5px] text-black leading-snug line-clamp-2">{item.title}</h3>
+              <p class="!text-[12.6px] text-[#5A5A5A] leading-relaxed line-clamp-2">{item.description}</p>
               <span class="mt-1 inline-flex items-center gap-1.5 !text-[12.6px] font-medium text-[#2563EB] group-hover:text-[#1d4fd1]">
                 Read More
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5">
@@ -61,11 +66,11 @@ const resources = [
       }
 
       <!-- Resources -->
-      <div id="resources" class="scroll-mt-16 p-4 bg-white border border-[#DBDBDA] rounded-[14px] flex flex-col gap-3">
+      <div id="resources" class="scroll-mt-16 p-3 bg-white border border-[#DBDBDA] rounded-[14px] flex flex-col gap-1.5">
         <span class="!text-[11px] tracking-wide text-[#2563EB] uppercase font-medium">
           Resources
         </span>
-        <ul class="flex flex-col gap-3">
+        <ul class="flex flex-col gap-1">
           {
             resources.map((r) => (
               <li>

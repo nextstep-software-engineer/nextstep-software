@@ -1,65 +1,89 @@
 ---
 // Industries We Empower — icon grid of verticals served
+// Icons: Tabler Icons (MIT) via the Iconify API — see README.md for credits.
 const industries = [
   {
     label: "Automotive",
-    path: "M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12",
+    paths: [
+      "M5 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0m10 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0",
+      "M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0H9m-6-6h15m-6 0V6",
+    ],
   },
   {
     label: "Healthcare",
-    path: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z",
+    paths: [
+      "M12.462 20.87q-.23.07-.462.13A12 12 0 0 1 3.5 6A12 12 0 0 0 12 3a12 12 0 0 0 8.5 3a12 12 0 0 1 .11 6.37M16 19h6m-3-3v6",
+    ],
   },
   {
     label: "Financial Services",
-    path: "M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-18 0h18M4.5 9v12M19.5 9v12",
+    paths: ["M3 21h18M3 10h18M5 6l7-3l7 3M4 10v11m16-11v11M8 14v3m4-3v3m4-3v3"],
   },
   {
     label: "Energy & Utilities",
-    path: "M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z",
+    paths: ["M13 3v7h6l-8 11v-7H5z"],
   },
   {
     label: "Retail & E-commerce",
-    path: "M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 1.98-4.706 2.545-7.5H5.106M7.5 14.25L5.106 5.25M7.5 14.25L4.5 20.25 3 20.25M17.25 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm-9 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z",
+    paths: [
+      "M4 19a2 2 0 1 0 4 0a2 2 0 1 0-4 0m11 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0",
+      "M17 17H6V3H4",
+      "m6 5l14 1l-1 7H6",
+    ],
   },
   {
     label: "Logistics & Supply Chain",
-    path: "M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25m0-9v9L3 16.5m0-9v9l9 5.25",
+    paths: [
+      "M5 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0m10 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0",
+      "M5 17H3v-4M2 5h11v12m-4 0h6m4 0h2v-6h-8m0-5h5l3 5M3 9h4",
+    ],
   },
   {
     label: "Telecommunications",
-    path: "M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z",
+    paths: [
+      "M18.364 19.364a9 9 0 1 0-12.728 0",
+      "M15.536 16.536a5 5 0 1 0-7.072 0",
+      "M11 13a1 1 0 1 0 2 0a1 1 0 1 0-2 0",
+    ],
   },
   {
     label: "Government",
-    path: "M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21",
+    paths: [
+      "M3 21h7v-3a2 2 0 0 1 4 0v3h7M6 21v-9m12 9v-9M6 12h12a3 3 0 0 0 3-3a9 8 0 0 1-9-6a9 8 0 0 1-9 6a3 3 0 0 0 3 3",
+    ],
   },
   {
     label: "Education & Research",
-    path: "M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347M4.26 10.147a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814M4.26 10.147a50.697 50.697 0 0112 3.342",
+    paths: ["M22 9L12 5L2 9l10 4zv6", "M6 10.6V16a6 3 0 0 0 12 0v-5.4"],
   },
   {
     label: "And Many More",
-    path: "M4.5 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm7.5 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm7.5 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z",
+    paths: [
+      "M4 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0m7 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0",
+    ],
   },
 ];
 ---
 
-<section id="industries" class="scroll-mt-16 py-8 sm:py-10 bg-[#F9FBFE]">
-  <div class="max-w-screen-2xl px-6 sm:px-10 lg:px-16 xl:px-20 mx-auto w-full">
-    <p class="text-center !text-[12.6px] tracking-[0.15em] text-[#2563EB] uppercase font-medium mb-6">
-      Industries We Empower
-    </p>
+<section id="industries" class="scroll-mt-16 py-8 sm:py-10 bg-[#F9FBFE] overflow-x-hidden">
+  <p class="text-center !text-[12.6px] tracking-[0.15em] text-[#2563EB] uppercase font-medium mb-6 px-6">
+    Industries We Empower
+  </p>
 
-    <div class="flex flex-wrap lg:flex-nowrap items-stretch justify-center gap-3">
+  <!-- Full-bleed scroll track: on wide screens where all 10 cards fit, they're
+       centered; on narrower screens it scrolls edge-to-edge across the full
+       viewport width instead of being boxed in by the page's max-width. -->
+  <div class="w-full overflow-x-auto">
+    <div class="flex items-stretch justify-center gap-2 w-max mx-auto px-4 pb-1">
       {
         industries.map((industry) => (
-          <div class="flex flex-col items-center text-center gap-2 p-3 w-[104px] sm:w-[110px] shrink-0 bg-white border border-[#DBDBDA] rounded-[14px]">
-            <div class="w-9 h-9 rounded-full border border-[#2563EB]/40 flex items-center justify-center text-[#2563EB]">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
-                <path stroke-linecap="round" stroke-linejoin="round" d={industry.path} />
-              </svg>
-            </div>
-            <span class="!text-[11.5px] text-black leading-tight">{industry.label}</span>
+          <div class="flex flex-col items-center text-center gap-2 p-3 w-[130px] shrink-0 bg-white border border-[#DBDBDA] rounded-[14px]">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.4" class="w-12 h-12">
+              {industry.paths.map((d) => (
+                <path stroke-linecap="round" stroke-linejoin="round" d={d} />
+              ))}
+            </svg>
+            <span class="w-full !text-[10.5px] font-semibold text-black leading-tight">{industry.label}</span>
           </div>
         ))
       }
