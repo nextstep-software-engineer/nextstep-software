@@ -145,3 +145,56 @@ Real case-study photography doesn't exist yet as a site asset, so each
 thumbnail uses the standard designer "image placeholder" convention instead:
 a diagonal cross (hand-drawn SVG, not fetched) plus the `tabler:photo`
 mountain/frame icon (Tabler Icons, MIT, via Iconify) centered on top.
+
+## People page (`src/pages/people/`, `src/components/People*.astro`, `src/components/ExecutiveLeadership.astro`, `src/components/WhyChooseTeam.astro`, `src/components/LeadershipQuote.astro`)
+
+### Executive photos
+
+`public/people-karsten-wenschuh.webp`, `public/people-niaz-rahman.webp`, and
+`public/people-walter-krutzner.webp` are real, provided headshots (not
+derived/AI-generated), resized and re-encoded as optimized webp site assets.
+
+### Logo mark
+
+`public/logo-icon-nextstep.svg` is the gear+rocket icon extracted from the
+existing `public/logo-nextstep.svg` wordmark (same vector paths, just the
+viewBox cropped to the icon group and the text group excluded) — used for the
+Hero's decorative ring graphic and the closing CTA badge, in place of
+`favicon.svg`, which is a rasterized PNG unsuitable for that use.
+
+### Icons
+
+Tabler Icons (MIT) and Lucide (MIT) via the Iconify API, plus `logos:linkedin-icon`
+(brand mark) for the "View LinkedIn Profile" buttons.
+
+| Use                                    | Iconify icon name          |
+| ---------------------------------------- | ----------------------------- |
+| Decades of Combined Experience           | `tabler:users-group`          |
+| Business First                           | `tabler:target-arrow`         |
+| Engineering Excellence                   | `tabler:settings`             |
+| Collaborative Partnership                | `lucide:handshake`            |
+| Global Perspective                       | `tabler:world`                |
+| Long-Term Commitment                     | `tabler:shield-check`         |
+| LinkedIn brand mark                      | `logos:linkedin-icon`         |
+
+Each "Key Expertise" list item (`src/components/ExecutiveLeadership.astro`) also
+gets its own topic-suitable Tabler icon instead of a repeated bullet:
+
+| Expertise label                  | Iconify icon name         |
+| ---------------------------------- | ---------------------------- |
+| Executive Leadership               | `tabler:crown`               |
+| Software Architecture              | `tabler:sitemap`             |
+| Engineering Management             | `tabler:settings-cog`        |
+| Digital Transformation             | `tabler:refresh`             |
+| Aerospace & Automotive Systems     | `tabler:car`                 |
+| Technology Innovation              | `tabler:bulb`                |
+| Business Development               | `tabler:trending-up`         |
+| Aftersales Transformation          | `tabler:tool`                |
+| Six Sigma Black Belt               | `tabler:certificate`         |
+| Lean Manufacturing                 | `tabler:building-factory`    |
+| Operational Excellence             | `tabler:adjustments`         |
+| Executive Advisory                 | `tabler:message-2`           |
+| Strategic Technology Advisory      | `tabler:compass`             |
+| Enterprise Architecture            | `tabler:building-skyscraper` |
+| Technology Modernisation           | `tabler:cpu`                 |
+| Software Engineering               | `tabler:code`                |
