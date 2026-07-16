@@ -1,0 +1,19 @@
+---
+import People from "../../components/pages/People.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Our People | NextStep Engineering Software Solutions"
+  description="Meet the experienced executive leadership behind NextStep Engineering — decades of combined expertise across engineering, digital transformation, and business strategy."
+  navTheme="light"
+  navCtaLabel="Contact"
+  navLinks={[
+    { href: "/", label: "Home" },
+    { href: "/people", label: "People" },
+    { href: "/approach", label: "Approach" },
+    { href: "/#services", label: "Solutions" },
+  ]}
+>
+  <People />
+</Layout>

@@ -1,0 +1,185 @@
+---
+// Executive Leadership — 3 exec cards with photo, bio, and expertise list.
+// Expertise icons + LinkedIn mark: Tabler Icons (MIT) and Iconify's Logos
+// collection — see README.md for credits.
+// Photos cropped directly from the People.png mockup (real headshots), saved
+// as proper site assets in public/.
+
+// One topic-suitable icon per unique expertise label (Tabler Icons via Iconify).
+const expertiseIcons: Record<string, string[]> = {
+  "Executive Leadership": ["m12 6l4 6l5-4l-2 10H5L3 8l5 4z"],
+  "Software Architecture": [
+    "M3 17a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm12 0a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zM6 15v-1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1m-6-6v3",
+  ],
+  "Engineering Management": [
+    "M12.003 21c-.732.001-1.465-.438-1.678-1.317a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37c1 .608 2.296.07 2.572-1.065c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c.886.215 1.325.957 1.318 1.694",
+    "M9 12a3 3 0 1 0 6 0a3 3 0 0 0-6 0m8.001 7a2 2 0 1 0 4 0a2 2 0 1 0-4 0m2-3.5V17m0 4v1.5m3.031-5.25l-1.299.75m-3.463 2l-1.3.75m0-3.5l1.3.75m3.463 2l1.3.75",
+  ],
+  "Digital Transformation": ["M20 11A8.1 8.1 0 0 0 4.5 9M4 5v4h4m-4 4a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"],
+  "Aerospace & Automotive Systems": [
+    "M5 17a2 2 0 1 0 4 0a2 2 0 1 0-4 0m10 0a2 2 0 1 0 4 0a2 2 0 1 0-4 0",
+    "M5 17H3v-6l2-5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0H9m-6-6h15m-6 0V6",
+  ],
+  "Technology Innovation": ["M3 12h1m8-9v1m8 8h1M5.6 5.6l.7.7m12.1-.7l-.7.7M9 16a5 5 0 1 1 6 0a3.5 3.5 0 0 0-1 3a2 2 0 0 1-4 0a3.5 3.5 0 0 0-1-3m.7 1h4.6"],
+  "Business Development": ["m3 17l6-6l4 4l8-8", "M14 7h7v7"],
+  "Aftersales Transformation": ["M7 10h3V7L6.5 3.5a6 6 0 0 1 8 8l6 6a2 2 0 0 1-3 3l-6-6a6 6 0 0 1-8-8z"],
+  "Six Sigma Black Belt": [
+    "M12 15a3 3 0 1 0 6 0a3 3 0 1 0-6 0",
+    "M13 17.5V22l2-1.5l2 1.5v-4.5",
+    "M10 19H5a2 2 0 0 1-2-2V7c0-1.1.9-2 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-1 1.73M6 9h12M6 12h3m-3 3h2",
+  ],
+  "Lean Manufacturing": [
+    "M4 21c1.147-4.02 1.983-8.027 2-12h6c.017 3.973.853 7.98 2 12",
+    "M12.5 13H17c.025 2.612.894 5.296 2 8M9 5a2.4 2.4 0 0 1 2-1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2-1a2.4 2.4 0 0 1 2-1a2.4 2.4 0 0 1 2 1M3 21h19",
+  ],
+  "Operational Excellence": [
+    "M4 10a2 2 0 1 0 4 0a2 2 0 0 0-4 0m2-6v4m0 4v8m4-4a2 2 0 1 0 4 0a2 2 0 0 0-4 0m2-12v10m0 4v2m4-13a2 2 0 1 0 4 0a2 2 0 0 0-4 0m2-3v1m0 4v11",
+  ],
+  "Executive Advisory": ["M8 9h8m-8 4h6m-5 5H6a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-3l-3 3z"],
+  "Strategic Technology Advisory": ["m8 16l2-6l6-2l-2 6z", "M3 12a9 9 0 1 0 18 0a9 9 0 1 0-18 0m9-9v2m0 14v2m-9-9h2m14 0h2"],
+  "Enterprise Architecture": ["M3 21h18M5 21V7l8-4v18m6 0V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"],
+  "Technology Modernisation": [
+    "M5 6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z",
+    "M9 9h6v6H9zm-6 1h2m-2 4h2m5-11v2m4-2v2m7 5h-2m2 4h-2m-5 7v-2m-4 2v-2",
+  ],
+  "Software Engineering": ["m7 8l-4 4l4 4m10-8l4 4l-4 4M14 4l-4 16"],
+};
+
+const executives = [
+  {
+    photo: "/people-karsten-wenschuh.webp",
+    name: "Karsten Wenschuh",
+    titles: ["Chief Executive Officer |", "Engineering Leader | Software Architect"],
+    bio: [
+      "Karsten Wenschuh is a visionary Chief Executive Officer and accomplished engineering leader with nearly 30 years of professional software development experience across the aerospace, automotive, and media industries.",
+      "Renowned for his passion for solving complex engineering challenges, he combines deep technical expertise with strategic leadership to deliver innovative, scalable, and high-performance software solutions.",
+      "As CEO, Karsten champions a culture of innovation, technical excellence, and continuous improvement. His leadership focuses on empowering teams, fostering collaboration, and creating customer-centric solutions that generate long-term business value.",
+    ],
+    expertise: [
+      "Executive Leadership",
+      "Software Architecture",
+      "Engineering Management",
+      "Digital Transformation",
+      "Aerospace & Automotive Systems",
+      "Technology Innovation",
+    ],
+  },
+  {
+    photo: "/people-niaz-rahman.webp",
+    name: "Niaz Rahman",
+    titles: ["Head of Business Development"],
+    bio: [
+      "A globally recognised thought leader, automotive aftersales specialist, and certified Six Sigma Black Belt, Niaz Rahman leads NextStep Engineering's business development and strategic growth initiatives.",
+      "He founded Motiv Elite in 2009 during the global financial crisis, building it into a trusted international consultancy serving leading automotive manufacturers, distributors, and suppliers worldwide.",
+      "With decades of international leadership experience, Niaz has advised senior executives on transformational programmes across aftersales operations, process optimisation, customer experience, operational excellence, and large-scale performance improvement. His practical, results-driven approach enables organisations to improve profitability, customer satisfaction, and long-term competitiveness.",
+    ],
+    expertise: [
+      "Business Development",
+      "Aftersales Transformation",
+      "Six Sigma Black Belt",
+      "Lean Manufacturing",
+      "Operational Excellence",
+      "Executive Advisory",
+    ],
+  },
+  {
+    photo: "/people-walter-krutzner.webp",
+    name: "Walter Krutzner",
+    titles: ["Advisor & Strategic Leader"],
+    bio: [
+      "Walter Krutzner is an accomplished technology advisor, strategic leader, and enterprise software architect with more than 40 years of international experience, including leadership roles with Microsoft and successfully founding and leading his own technology consulting company in Thailand.",
+      "He specialises in helping organisations align technology with business strategy to accelerate digital transformation, operational excellence, and sustainable growth.",
+      "Throughout his career, Walter has guided organisations through complex digital initiatives, enterprise architecture programmes, and large-scale technology transformations. He is passionate about mentoring teams, fostering innovation, and building trusted, long-term partnerships. His leadership style is defined by collaboration, integrity, and practical, results-oriented execution.",
+    ],
+    expertise: [
+      "Strategic Technology Advisory",
+      "Enterprise Architecture",
+      "Digital Transformation",
+      "Technology Modernisation",
+      "Executive Leadership",
+      "Software Engineering",
+    ],
+  },
+];
+---
+
+<section id="leadership" class="scroll-mt-16 py-12 sm:py-16 bg-[#F9FBFE]">
+  <div class="max-w-screen-2xl px-6 sm:px-10 lg:px-16 xl:px-20 mx-auto w-full">
+    <div class="text-center mb-10">
+      <h2 class="!text-[28px] sm:!text-[32px] text-[#0B1220]">
+        Executive Leadership
+      </h2>
+      <div class="w-10 h-[3px] bg-[#2563EB] mx-auto mt-1.5"></div>
+      <p class="mt-3 !text-[18px] font-semibold text-[#5A5A5A] max-w-xl mx-auto leading-relaxed">
+        Experienced executives delivering engineering excellence, digital transformation, and business growth.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      {
+        executives.map((exec) => (
+          <div class="flex flex-col bg-white border border-[#DBDBDA] rounded-[16px] overflow-hidden">
+            <img
+              src={exec.photo}
+              alt={exec.name}
+              class="w-full h-96 object-cover object-top"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="p-5 flex-1 flex flex-col gap-3">
+              <div>
+                <h3 class="!text-[29px] text-[#0B1220]">{exec.name}</h3>
+                <p class="mt-1 !text-[17px] font-semibold text-[#2563EB] leading-snug">
+                  {exec.titles.map((t) => (
+                    <>
+                      {t}
+                      <br />
+                    </>
+                  ))}
+                </p>
+                <div class="mt-2 w-8 h-[2px] bg-[#2563EB]" />
+              </div>
+
+              <div class="mt-2 flex flex-col gap-3">
+                {exec.bio.map((p) => (
+                  <p class="!text-[15px] font-medium text-[#374151] leading-relaxed">{p}</p>
+                ))}
+              </div>
+
+              <div class="mt-auto pt-1">
+                <span class="!text-[15px] font-semibold text-[#2563EB] uppercase tracking-wide">
+                  Key Expertise
+                </span>
+                <ul class="mt-2 flex flex-col gap-2">
+                  {exec.expertise.map((item) => (
+                    <li class="flex items-center gap-2 !text-[14.5px] font-medium text-[#374151]">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" class="w-4 h-4 shrink-0">
+                        {expertiseIcons[item].map((d) => (
+                          <path stroke-linecap="round" stroke-linejoin="round" d={d} />
+                        ))}
+                      </svg>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a
+                href="#"
+                class="mt-3 inline-flex items-center justify-center gap-2 px-4 py-2.5 !text-[13px] font-medium text-[#2563EB] border border-[#2563EB]/25 rounded-xl hover:bg-[#2563EB]/5 transition-colors"
+              >
+                <svg viewBox="0 0 256 256" class="w-4 h-4">
+                  <path fill="#0a66c2" d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4c-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.91 39.91 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186zM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009s9.851-22.014 22.008-22.016c12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97zM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453" />
+                </svg>
+                View LinkedIn Profile
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-3.5 h-3.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

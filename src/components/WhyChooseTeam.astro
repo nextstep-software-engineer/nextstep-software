@@ -1,0 +1,83 @@
+---
+// Why Clients Choose Our Team — 6-column feature grid
+// Icons: Tabler Icons (MIT) and Lucide (MIT) via the Iconify API — see README.md.
+const reasons = [
+  {
+    title: "Decades of Combined Experience",
+    description: "International leadership across engineering, manufacturing and enterprise technology.",
+    paths: [
+      "M10 13a2 2 0 1 0 4 0a2 2 0 0 0-4 0m-2 8v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1M15 5a2 2 0 1 0 4 0a2 2 0 0 0-4 0m2 5h2a2 2 0 0 1 2 2v1M5 5a2 2 0 1 0 4 0a2 2 0 0 0-4 0m-2 8v-1a2 2 0 0 1 2-2h2",
+    ],
+  },
+  {
+    title: "Business First",
+    description: "Technology decisions are always aligned with commercial outcomes.",
+    paths: [
+      "M11 12a1 1 0 1 0 2 0a1 1 0 1 0-2 0",
+      "M12 7a5 5 0 1 0 5 5",
+      "M13 3.055A9 9 0 1 0 20.941 11",
+      "M15 6v3h3l3-3h-3V3zm0 3l-3 3",
+    ],
+  },
+  {
+    title: "Engineering Excellence",
+    description: "Strong technical capability backed by proven delivery methodologies.",
+    paths: [
+      "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066-2.573c-.94-1.543.826-3.31 2.37-2.37c1 .608 2.296.07 2.572-1.065",
+      "M9 12a3 3 0 1 0 6 0a3 3 0 0 0-6 0",
+    ],
+  },
+  {
+    title: "Collaborative Partnership",
+    description: "Working as an extension of your team from discovery through delivery.",
+    paths: [
+      "m11 17l2 2a1 1 0 1 0 3-3",
+      "m14 14l2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4",
+      "m21 3l1 11h-2M3 3L2 14l6.5 6.5a1 1 0 1 0 3-3M3 4h8",
+    ],
+  },
+  {
+    title: "Global Perspective",
+    description: "Experience across Asia-Pacific, Europe, Middle East and international markets.",
+    paths: [
+      "M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8",
+      "M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18",
+    ],
+  },
+  {
+    title: "Long-Term Commitment",
+    description: "Focused on building trusted partnerships rather than one-off projects.",
+    paths: [
+      "M11.46 20.846A12 12 0 0 1 3.5 6A12 12 0 0 0 12 3a12 12 0 0 0 8.5 3a12 12 0 0 1-.09 7.06",
+      "M15 19l2 2l4-4",
+    ],
+  },
+];
+---
+
+<section class="py-12 sm:py-16 bg-[#F9FBFE]">
+  <div class="max-w-screen-2xl px-6 sm:px-10 lg:px-16 xl:px-20 mx-auto w-full">
+    <div class="text-center mb-8">
+      <h2 class="!text-[28px] sm:!text-[32px] text-[#0B1220]">
+        Why Clients Choose Our Team
+      </h2>
+      <div class="w-10 h-[3px] bg-[#2563EB] mx-auto mt-1.5"></div>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+      {
+        reasons.map((reason) => (
+          <div class="flex flex-col items-center text-center gap-3 px-4 py-6 border border-[#EDEDED] rounded-[14px]">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.6" class="w-12 h-12">
+              {reason.paths.map((d) => (
+                <path stroke-linecap="round" stroke-linejoin="round" d={d} />
+              ))}
+            </svg>
+            <h3 class="!text-[15px] text-[#0B1220] leading-snug">{reason.title}</h3>
+            <p class="!text-[13.5px] font-medium text-[#374151] leading-relaxed">{reason.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
