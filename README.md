@@ -47,6 +47,31 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 
 ## 🎨 Icon credits
 
+### Rules for adding icons
+
+Before adding or replacing an icon, verify its license rather than assuming
+that every collection available through Iconify has the same terms.
+
+1. Find the icon on the [Iconify icon sets directory](https://icon-sets.iconify.design/).
+2. Open the collection page and confirm the collection name, author, license,
+   and link to the upstream license.
+3. Prefer permissively licensed open-source collections. **Tabler Icons** and
+   **Lucide** are currently preferred because both use the MIT license.
+4. Record the Iconify identifier (for example, `tabler:cloud`), collection
+   license, component using it, and any modifications in this README.
+5. Keep the upstream copyright and license notice when its license requires
+   one. Do not remove attribution required by the collection.
+6. Treat brand-logo collections separately. Availability through Iconify does
+   not grant trademark permission; verify the brand owner's usage rules and
+   use the mark only to identify the relevant company or technology.
+7. Re-check the upstream repository before release if an icon's license is
+   unclear or has changed. Do not use icons marked with an unknown, restricted,
+   or incompatible license until that status is resolved.
+
+When possible, save or inline the SVG locally so the production site has no
+runtime dependency on the Iconify API. Do not alter an icon in a way that
+misrepresents its original license or a protected brand mark.
+
 The 8 solution-card icons in `src/components/WhatWeDo.astro` were fetched from
 the [Iconify](https://iconify.design/) API (`api.iconify.design`), sourced
 from the **Tabler Icons** set ([MIT license](https://github.com/tabler/tabler-icons/blob/master/LICENSE)).
@@ -65,6 +90,33 @@ Verify licensing status directly at [icon-sets.iconify.design/tabler](https://ic
 
 Fetched via `curl "https://api.iconify.design/tabler:<name>.svg"` and inlined
 as raw SVG path data (no runtime dependency on Iconify).
+
+### Approach page icons (`src/components/pages/Approach.astro`)
+
+The delivery-step and value-pillar icons use locally inlined SVG paths from
+**Tabler Icons**, accessed through Iconify. Tabler Icons is licensed under the
+[MIT license](https://github.com/tabler/tabler-icons/blob/master/LICENSE).
+
+| Use | Iconify icon name |
+| --- | --- |
+| Business Challenge | `tabler:users-group` |
+| Discovery & Strategy | `tabler:search` |
+| Solution Design | `tabler:edit` |
+| Engineering & Development | `tabler:code` |
+| Testing & Validation | `tabler:shield-check` |
+| Deployment & Integration | `tabler:cloud-upload` |
+| Continuous Improvement | `tabler:trending-up` |
+| Business Driven | `tabler:target-arrow` |
+| Engineering Excellence | `tabler:settings` |
+| Modern Technology | `tabler:cloud` |
+| Collaborative Partnership | `tabler:users-group` |
+| Measurable Outcomes | `tabler:chart-bar` |
+| Continuous Innovation | `tabler:rocket` |
+
+The SVGs are decorative and inlined in the component, with no runtime request
+to Iconify. Verify the collection license again at
+[icon-sets.iconify.design/tabler](https://icon-sets.iconify.design/tabler/)
+before replacing them with icons from another collection.
 
 ### Stats bar icons (`src/components/StatsBar.astro`)
 

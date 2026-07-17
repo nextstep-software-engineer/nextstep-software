@@ -75,7 +75,7 @@ const isLight = theme === "light";
                   data-inactive-class={isLight ? "text-[#0B1220]/70" : "text-white/85"}
                   aria-current={active ? "page" : undefined}
                   class:list={[
-                    "relative inline-flex items-center gap-1 !text-[16px] font-semibold tracking-wide transition-colors whitespace-nowrap",
+                    "relative inline-flex items-center gap-1 !text-[16px] font-['Manrope'] font-bold tracking-wide transition-colors whitespace-nowrap",
                     "focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/60 rounded-md",
                     isLight
                       ? ["hover:text-[#0B1220]", active ? "text-[#2563EB]" : "text-[#0B1220]/70"]
@@ -159,7 +159,7 @@ const isLight = theme === "light";
               <a
                 href={href}
                 class:list={[
-                  "block rounded-md px-2 py-2 text-[16px] font-semibold",
+                  "block rounded-md px-2 py-2 text-[16px] font-['Manrope'] font-bold",
                   "focus:outline-none",
                   isLight
                     ? [
@@ -225,6 +225,7 @@ const isLight = theme === "light";
   // own underline, so the change reads as motion instead of a jump-cut.
   const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-ns-link]");
   const bar = document.getElementById("ns-underline-bar");
+  const previousNavKey = "ns-previous-nav-href";
 
   const placeBar = (link: HTMLAnchorElement, animate: boolean) => {
     if (!bar) return;
@@ -236,12 +237,83 @@ const isLight = theme === "light";
 
   const initialActive = Array.from(navLinks).find((l) => l.dataset.active === "true");
   if (initialActive) {
-    // Position instantly on load — nothing to animate from yet.
-    requestAnimationFrame(() => placeBar(initialActive, false));
+    let previousHref: string | null = null;
+    try {
+      previousHref = sessionStorage.getItem(previousNavKey);
+      sessionStorage.removeItem(previousNavKey);
+    } catch (_) {}
+
+    const previousLink = previousHref
+      ? Array.from(navLinks).find((link) => {
+          try {
+            return new URL(link.href).pathname === new URL(previousHref, window.location.origin).pathname;
+          } catch (_) {
+            return false;
+          }
+        })
+      : undefined;
+
+    if (previousLink && previousLink !== initialActive) {
+      // Start at the active item from the page we just left, then slide to
+      // this page's active item. This also covers navigation initiated by
+      // cards, buttons, logos, footer links, and other non-navbar controls.
+      requestAnimationFrame(() => {
+        placeBar(previousLink, false);
+        requestAnimationFrame(() => placeBar(initialActive, true));
+      });
+    } else {
+      // Direct page load, refresh, or same active section.
+      requestAnimationFrame(() => placeBar(initialActive, false));
+    }
   }
 
+  // Remember the current navbar position before any normal internal
+  // cross-page navigation, even when the clicked link is outside the navbar.
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      ) return;
+
+      const target = event.target;
+      const anchor = target instanceof Element
+        ? target.closest<HTMLAnchorElement>("a[href]")
+        : null;
+      if (!anchor || anchor.target === "_blank" || anchor.hasAttribute("download")) return;
+
+      try {
+        const destination = new URL(anchor.href, window.location.href);
+        if (
+          destination.origin !== window.location.origin ||
+          destination.pathname === window.location.pathname
+        ) return;
+
+        const currentActive = Array.from(navLinks).find(
+          (link) => link.dataset.active === "true",
+        );
+        if (currentActive) {
+          sessionStorage.setItem(previousNavKey, currentActive.getAttribute("href") ?? "/");
+        }
+      } catch (_) {}
+    },
+    true,
+  );
+
   navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
+    link.addEventListener("click", (e) => {
+      // Navbar links already animate before navigation. Clear the cross-page
+      // handoff recorded by the document-level listener so the destination
+      // page does not replay the same movement a second time.
+      try {
+        sessionStorage.removeItem(previousNavKey);
+      } catch (_) {}
+
       placeBar(link, true);
       navLinks.forEach((other) => {
         const activeClass = other.dataset.activeClass ?? "";
@@ -252,6 +324,23 @@ const isLight = theme === "light";
         inactiveClass.split(" ").forEach((c) => c && other.classList.toggle(c, !isClicked));
         other.dataset.active = isClicked ? "true" : "false";
       });
+
+      // Cross-page links (different pathname) would otherwise cut the slide
+      // animation short — the browser starts unloading before the 0.25s CSS
+      // transition can play, which reads as a teleport. Give it a moment to
+      // finish before navigating. Same-page hash links, new-tab, and
+      // modifier-clicks are left to behave natively.
+      const href = link.getAttribute("href") ?? "";
+      const isModifiedClick = e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0;
+      const targetPathname = href.split("#")[0];
+      const isCrossPage = targetPathname !== "" && targetPathname !== window.location.pathname;
+
+      if (!isModifiedClick && isCrossPage && link.target !== "_blank") {
+        e.preventDefault();
+        setTimeout(() => {
+          window.location.href = href;
+        }, 220);
+      }
     });
   });
 </script>
