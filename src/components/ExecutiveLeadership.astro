@@ -48,6 +48,7 @@ const expertiseIcons: Record<string, string[]> = {
 const executives = [
   {
     photo: "/people-karsten-wenschuh.webp",
+    photoPosition: "center 35%",
     name: "Karsten Wenschuh",
     titles: ["Chief Executive Officer |", "Engineering Leader | Software Architect"],
     bio: [
@@ -66,12 +67,13 @@ const executives = [
   },
   {
     photo: "/people-niaz-rahman.webp",
+    photoPosition: "center top",
     name: "Niaz Rahman",
     linkedin:
       "https://www.linkedin.com/in/niazrahman?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     titles: ["Head of Business Development"],
     bio: [
-      "A globally recognised thought leader, automotive aftersales specialist, and certified Six Sigma Black Belt, Niaz Rahman leads NextStep Engineering's business development and strategic growth initiatives.",
+      "A globally recognised thought leader, automotive specialist, and certified Six Sigma Black Belt, Niaz Rahman leads NextStep Engineering's business development and strategic growth initiatives.",
       "He founded Motiv Elite in 2009 during the global financial crisis, building it into a trusted international consultancy serving leading automotive manufacturers, distributors, and suppliers worldwide.",
       "With decades of international leadership experience, Niaz has advised senior executives on transformational programmes across aftersales operations, process optimisation, customer experience, operational excellence, and large-scale performance improvement. His practical, results-driven approach enables organisations to improve profitability, customer satisfaction, and long-term competitiveness.",
     ],
@@ -86,6 +88,7 @@ const executives = [
   },
   {
     photo: "/people-walter-krutzner.webp",
+    photoPosition: "center 13%",
     name: "Walter Krutzner",
     titles: ["Advisor & Strategic Leader"],
     bio: [
@@ -124,7 +127,8 @@ const executives = [
             <img
               src={exec.photo}
               alt={exec.name}
-              class="w-full h-96 object-cover object-top"
+              class="w-full h-96 object-cover"
+              style={`object-position: ${exec.photoPosition};`}
               loading="lazy"
               decoding="async"
             />
