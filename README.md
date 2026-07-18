@@ -173,9 +173,9 @@ Also Tabler Icons (MIT), same fetch method as above.
 | Energy & Utilities         | `tabler:bolt`            |
 | Retail & E-commerce        | `tabler:shopping-cart`   |
 | Logistics & Supply Chain   | `tabler:truck-delivery`  |
-| Telecommunications         | `tabler:broadcast`       |
+| Aerospace Engineering      | `tabler:plane`           |
 | Government                 | `tabler:building-pavilion` |
-| Education & Research       | `tabler:school`          |
+| Compliance & Security      | `tabler:shield-lock`     |
 | And Many More               | `tabler:dots`            |
 
 ### Our Engineering Process icons (`src/components/ProcessSection.astro`)
