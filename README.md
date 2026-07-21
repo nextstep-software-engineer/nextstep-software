@@ -122,6 +122,30 @@ production page has no runtime dependency on the Iconify API.
 The locally saved SVGs were fetched from `api.iconify.design`, use the site
 blue as their stroke color, and otherwise retain the original icon geometry.
 
+### Contact page icons (`src/components/pages/Contact.astro`)
+
+The Contact page uses locally saved **Tabler Icons** and one **Lucide** icon,
+both MIT-licensed and sourced through Iconify. Existing `users`, `world`, and
+`shield-check` files are reused from `public/icons-iconify/solutions/`; the
+remaining files are stored in `public/icons-iconify/contact/`.
+
+| Use | Iconify icon name | Local asset |
+| --- | --- | --- |
+| Business email | `tabler:mail` | `contact/mail.svg` |
+| Phone | `tabler:phone` | `contact/phone.svg` |
+| Location | `tabler:map-pin` | `contact/map-pin.svg` |
+| Business hours | `tabler:clock` | `contact/clock.svg` |
+| Schedule a call | `tabler:calendar` | `contact/calendar.svg` |
+| We value your time | `tabler:shield-check` | Reused from Solutions |
+| Expert guidance / Projects delivered | `tabler:users` | Reused from Solutions |
+| Trusted and confidential | `tabler:lock` | `contact/lock.svg` |
+| No obligation | `tabler:circle-check` | `contact/circle-check.svg` |
+| Industries served | `tabler:world` | Reused from Solutions |
+| Long-term partnerships | `lucide:handshake` | `contact/handshake.svg` |
+
+All SVGs are loaded locally, so the Contact page makes no runtime request to
+the Iconify API.
+
 ### Approach page icons (`src/components/pages/Approach.astro`)
 
 The delivery-step and value-pillar icons use locally inlined SVG paths from

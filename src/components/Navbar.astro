@@ -133,9 +133,16 @@ const isLight = theme === "light";
           stroke-width="2"
         >
           <path
+            id="ns-menu-icon-open"
             stroke-linecap="round"
             stroke-linejoin="round"
             d="M4 7h16M4 12h16M4 17h16"></path>
+          <path
+            id="ns-menu-icon-close"
+            class="hidden"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 6l12 12M18 6L6 18"></path>
         </svg>
       </button>
     </div>
@@ -194,14 +201,22 @@ const isLight = theme === "light";
   // Tiny, framework-free toggler with accessibility niceties
   const btn = document.getElementById("ns-menu-button");
   const menu = document.getElementById("ns-mobile-menu");
+  const openIcon = document.getElementById("ns-menu-icon-open");
+  const closeIcon = document.getElementById("ns-menu-icon-close");
   if (btn && menu) {
     const close = () => {
       menu.classList.add("hidden");
       btn.setAttribute("aria-expanded", "false");
+      btn.setAttribute("aria-label", "Open menu");
+      openIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
     };
     const open = () => {
       menu.classList.remove("hidden");
       btn.setAttribute("aria-expanded", "true");
+      btn.setAttribute("aria-label", "Close menu");
+      openIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
     };
     const toggle = () => (menu.classList.contains("hidden") ? open() : close());
 
