@@ -1,0 +1,90 @@
+---
+const solutions = [
+  { icon: "compass", title: "Digital Engineering", text: "Modern digital product development faster, smarter and more innovative with next-gen engineering technologies.", items: ["Product Engineering", "Digital Engineering", "Engineering Collaboration", "Simulation & Analysis", "Digital Twin"] },
+  { icon: "cube", title: "Product Lifecycle Management", text: "Managing the complete lifecycle of engineering and product data with structured change, configuration, and document management processes.", items: ["PLM Strategy & Implementation", "Engineering Change Management", "BOM Management", "Configuration Management", "Document Control", "Product Data Governance"] },
+  { icon: "laptop", title: "Custom Software & Enterprise Platforms", text: "Software built specifically for unique business needs to drive efficiency and growth.", items: ["Web Applications", "Mobile Applications", "ERP Systems", "APIs", "Enterprise Platforms", "Customer Portals"] },
+  { icon: "hierarchy", title: "Enterprise Integration & Business Applications", text: "Connect business systems, automate workflows, and build internal applications that improve operational efficiency and data visibility across the organisation.", items: ["Workflow Automation", "Business Process Applications", "ERP & CRM Integration", "API Integration", "Data Synchronisation", "Reporting & Analytics Dashboards"] },
+  { icon: "brain", title: "Artificial Intelligence & Automation", text: "Leveraging AI to automate, augment and accelerate decision-making across business processes.", items: ["Predictive Analytics", "AI Assistants", "Business Intelligence", "Machine Learning", "Intelligent Automation", "Computer Vision"] },
+  { icon: "cloud-lock", title: "Cloud, DevOps & Cyber Security", text: "Building secure, scalable and reliable platforms in the cloud. Ensure resilience and delivery.", items: ["AWS", "Microsoft Azure", "Google Cloud", "DevOps & CI/CD", "Cloud Security", "Infrastructure Modernisation"] },
+];
+
+const values = [
+  ["users", "Engineering First", "We understand engineering challenges. Our solutions are built for real-world engineering advantage."],
+  ["shield-check", "End-to-End Delivery", "From strategy and consulting to implementation and support – we deliver measurable results."],
+  ["world", "Global Expertise", "International experience across industries with a local presence and domain knowledge."],
+  ["bulb", "Technology Independent", "We recommend the right technology for your business – not tied to any platform or tool."],
+];
+
+const steps = [
+  ["search", "Discover", "Understand your business and goals"], ["pencil", "Design", "Define the right solution roadmap"],
+  ["hammer", "Build", "Develop with quality and agility"], ["route", "Integrate", "Seamlessly connect systems and data"],
+  ["rocket", "Deploy", "Implement and move to real-world"], ["handshake", "Support", "Proactive support and optimisation"],
+  ["chart-bar", "Optimise", "Continuously improve and drive value"],
+];
+
+const paths: Record<string, string> = {
+  compass: "M12 2l3 7-3 3-3-3 3-7zm-3 10-4 9m10-9 4 9M7 17h10M12 12v7", cube: "M4 7l8-4 8 4v10l-8 4-8-4V7zm0 0 8 5 8-5M12 12v9",
+  laptop: "M5 5h14v10H5V5zm-2 13h18", network: "M12 4v5M5 20v-5h14v5M5 15v-3h14v3M3 20h4v2H3zm7-11h4v3h-4zm7 11h4v2h-4z",
+  brain: "M9 4a3 3 0 00-3 3v1a3 3 0 00-1 5 3 3 0 002 5 3 3 0 005 2V4a3 3 0 00-3 0zm6 0a3 3 0 013 3v1a3 3 0 011 5 3 3 0 01-2 5 3 3 0 01-5 2V4a3 3 0 013 0M8 9h4m4 0h-4m-4 5h4m4 0h-4",
+  cloud: "M7 19h11a4 4 0 00.4-8A6 6 0 007 9a5 5 0 000 10zm4-4v-2a1 1 0 012 0v2m-3 0h4v3h-4z", people: "M8 11a3 3 0 100-6 3 3 0 000 6zm8-1a2.5 2.5 0 100-5 2.5 2.5 0 000 5M3 20v-3a4 4 0 014-4h2a4 4 0 014 4v3H3zm10-7h3a4 4 0 014 4v3h-5",
+  shield: "M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3zm-4 10l3 3 5-6", globe: "M12 2a10 10 0 100 20 10 10 0 000-20zm0 0c3 3 4 6 4 10s-1 7-4 10m0-20C9 5 8 8 8 12s1 7 4 10M2 12h20M4 7h16M4 17h16",
+  bulb: "M9 18h6m-5 3h4m3-10a5 5 0 01-3 4.6V18h-4v-2.4A5 5 0 1117 11z", search: "M11 4a6 6 0 100 12 6 6 0 000-12zm4.5 10.5L21 20M11 7v4l2 2", design: "M4 18V6h16v12H4zm3-3l3-4 3 2 4-5", build: "M4 4h16v16H4V4zm4 0v4h8V4m-8 9h8v4H8z", integrate: "M12 8a4 4 0 100 8 4 4 0 000-8zm0-5v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1", rocket: "M8 16c-2 0-4 2-4 4 2 0 4-2 4-4zm1-2l-2-2 7-7c2-2 5-2 5-2s0 3-2 5l-7 7-1-1zm5-7l3 3", support: "M4 7h16v10H8l-4 4V7zm5 5h6M7 9h10", chart: "M5 20v-7h3v7m3 0V8h3v12m3 0V4h3v16M3 20h19"
+};
+
+// Reuse the same icon artwork already shown on the Home page.
+const reusedIcons: Record<string, string[]> = {
+  cube: ["M21 16.008V7.99a1.98 1.98 0 0 0-1-1.717l-7-4.008a2.02 2.02 0 0 0-2 0L4 6.273c-.619.355-1 1.01-1 1.718v8.018c0 .709.381 1.363 1 1.717l7 4.008a2.02 2.02 0 0 0 2 0l7-4.008c.619-.355 1-1.01 1-1.718M12 22V12m0 0l8.73-5.04m-17.46 0L12 12"],
+  brain: ["M15.5 13a3.5 3.5 0 0 0-3.5 3.5v1a3.5 3.5 0 0 0 7 0v-1.8M8.5 13a3.5 3.5 0 0 1 3.5 3.5v1a3.5 3.5 0 0 1-7 0v-1.8", "M17.5 16a3.5 3.5 0 0 0 0-7H17", "M19 9.3V6.5a3.5 3.5 0 0 0-7 0M6.5 16a3.5 3.5 0 0 1 0-7H7", "M5 9.3V6.5a3.5 3.5 0 0 1 7 0v10"],
+  users: ["M10 13a2 2 0 1 0 4 0a2 2 0 1 0-4 0m-2 8v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1M15 5a2 2 0 1 0 4 0a2 2 0 0 0-4 0m2 5h2a2 2 0 0 1 2 2v1M5 5a2 2 0 1 0 4 0a2 2 0 0 0-4 0m-2 8v-1a2 2 0 0 1 2-2h2"],
+  world: ["M3 12a9 9 0 1 0 18 0a9 9 0 0 0-18 0m.6-3h16.8M3.6 15h16.8", "M11.5 3a17 17 0 0 0 0 18m1-18a17 17 0 0 1 0 18"],
+  search: ["M3 10a7 7 0 1 0 14 0a7 7 0 1 0-14 0m18 11l-6-6"],
+  rocket: ["M4 13a8 8 0 0 1 7 7a6 6 0 0 0 3-5a9 9 0 0 0 6-8a3 3 0 0 0-3-3a9 9 0 0 0-8 6a6 6 0 0 0-5 3", "M7 14a6 6 0 0 0-3 6a6 6 0 0 0 6-3m4-8a1 1 0 1 0 2 0a1 1 0 1 0-2 0"],
+  handshake: ["m11 17l2 2a1 1 0 1 0 3-3", "m14 14l2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4", "m21 3l1 11h-2M3 3L2 14l6.5 6.5a1 1 0 1 0 3-3M3 4h8"],
+};
+---
+
+<main class="solutions-page">
+  <section class="hero">
+    <img src="/solutions-hero.webp" alt="Digital factory platform with an industrial robotic arm" />
+    <div class="hero-copy wrap">
+      <p class="eyebrow">END-TO-END SOLUTIONS</p>
+      <h1>Complete Engineering.<br />Intelligent Solutions.<br /><span>Better Outcomes.</span></h1>
+      <p>From concept to continuous improvement, NextStep Engineering delivers complete digital transformation solutions for <b>engineering</b>, <b>industrial</b>, and <b>enterprise</b> businesses.</p>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>OUR END-TO-END SOLUTIONS</h2>
+    <div class="solutions-grid">
+      {solutions.map((s) => <article class="solution-card">
+        <div class="icon large">{reusedIcons[s.icon] ? <svg viewBox="0 0 24 24" aria-hidden="true">{reusedIcons[s.icon].map(d => <path d={d} />)}</svg> : <img src={`/icons-iconify/solutions/${s.icon}.svg`} alt="" />}</div>
+        <div class="card-body"><h3>{s.title}</h3><p>{s.text}</p><ul>{s.items.map(i => <li>{i}</li>)}</ul></div>
+        <a href="/contact" aria-label={`Learn more about ${s.title}`}>→</a>
+      </article>)}
+    </div>
+  </section>
+
+  <section class="why section wrap">
+    <h2>WHY NEXTSTEP ENGINEERING?</h2>
+    <div class="value-grid">{values.map(([icon, title, text]) => <article><div class="icon">{reusedIcons[icon] ? <svg viewBox="0 0 24 24" aria-hidden="true">{reusedIcons[icon].map(d => <path d={d} />)}</svg> : <img src={`/icons-iconify/solutions/${icon}.svg`} alt="" />}</div><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
+  </section>
+
+  <section class="process section wrap">
+    <h2>HOW WE WORK</h2>
+    <div class="steps">{steps.map(([icon,title,text]) => <article><div class="step-icon">{reusedIcons[icon] ? <svg viewBox="0 0 24 24" aria-hidden="true">{reusedIcons[icon].map(d => <path d={d} />)}</svg> : <img src={`/icons-iconify/solutions/${icon}.svg`} alt="" />}</div><h3>{title}</h3><p>{text}</p></article>)}</div>
+  </section>
+
+</main>
+
+<style>
+  .icon img{width:42px;height:42px;object-fit:contain}.value-grid .icon img{width:37px;height:37px}.step-icon img{width:30px;height:30px;filter:brightness(0) invert(1)}.cta-gear img{width:95px;height:95px;filter:brightness(0) invert(1)}
+  .process{padding-bottom:72px}
+  .steps:after{content:"";position:absolute;right:-4px;top:24px;width:8px;height:8px;border-radius:50%;background:#075ddd;z-index:2}
+  .solutions-page .process>h2{font-size:19px}.solutions-page .steps h3{font-size:15px}.solutions-page .steps p{font-size:12px;line-height:1.45;max-width:145px}
+  @media(max-width:1000px){.steps:after{display:none}.solutions-page .steps{display:flex;overflow-x:auto;gap:12px;padding:4px 2px 18px;scroll-snap-type:x mandatory}.solutions-page .steps article{flex:0 0 150px;scroll-snap-align:start}}
+  .solutions-page .solution-card{min-height:365px}.solutions-page .card-body h3{font-size:20.5px}.solutions-page .card-body p{font-size:14px;line-height:1.6}.solutions-page .card-body li{font-size:13.5px}.solutions-page .value-grid h3{font-size:15.5px}.solutions-page .value-grid p{font-size:13.5px;line-height:1.55}
+  .solutions-page{background:#fff;color:#071330;overflow:hidden}.wrap{max-width:1440px;margin:0 auto;padding-left:52px;padding-right:52px}.hero{height:475px;position:relative;border-bottom:1px solid #dfe5ef;background:#f7fbff}.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero-copy{position:relative;z-index:1;padding-top:45px}.eyebrow{font-family:Manrope,sans-serif;color:#0755ca;font-weight:800;letter-spacing:.12em;font-size:18px;margin:0 0 14px}.hero h1{font-size:52px;line-height:1.05;margin:0 0 24px;letter-spacing:-.035em}.hero h1 span{color:#075ddd}.hero-copy>p:last-child{font-size:16px;line-height:1.75;max-width:610px;margin:0}.hero b{color:#075ddd;font-weight:600}.section{padding-top:21px}.section>h2{text-align:center;font-size:18px;letter-spacing:.12em;margin:0 0 20px}.solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 24px}.solution-card{min-height:350px;border:1px solid #d8dee8;border-radius:8px;padding:26px 20px;display:grid;grid-template-columns:92px 1fr;position:relative;box-shadow:0 2px 8px rgba(13,49,98,.03)}.icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(145deg,#eef4ff,#f8faff);display:grid;place-items:center;color:#075ddd;flex:none}.icon.large{width:78px;height:78px}.icon svg{width:42px;height:42px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.card-body h3{font-size:19px;line-height:1.25;margin:2px 0 13px}.card-body p{font-size:12.5px;line-height:1.65;margin:0 0 12px}.card-body ul{padding:0;margin:0;list-style:none}.card-body li{font-size:12.5px;margin:6px 0;padding-left:20px;position:relative}.card-body li:before{content:'✓';position:absolute;left:0;top:0;color:#075ddd;border:1px solid #075ddd;border-radius:50%;font-size:8px;width:11px;height:11px;line-height:10px;text-align:center}.solution-card>a{position:absolute;right:16px;bottom:14px;width:34px;height:34px;border:1px solid #91aee3;color:#075ddd;border-radius:50%;display:grid;place-items:center;text-decoration:none;font-size:22px}.why{padding-top:18px}.why>h2{margin-bottom:14px}.why>h2:after,.process>h2:after{content:'';display:block;width:38px;height:3px;background:#075ddd;margin:7px auto 0}.value-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #d8dee8;border-radius:8px}.value-grid article{display:flex;gap:16px;padding:20px 22px;min-height:126px}.value-grid article+article{border-left:1px solid #e2e6ed}.value-grid .icon{width:58px;height:58px}.value-grid .icon svg{width:37px;height:37px}.value-grid h3{font-size:14px;margin:2px 0 8px}.value-grid p{font-size:12px;line-height:1.6;margin:0}.process{padding-top:16px}.process>h2{margin-bottom:19px}.steps{display:grid;grid-template-columns:repeat(7,1fr);position:relative}.steps:before{content:'';position:absolute;left:5%;right:0;top:28px;height:2px;background:#1763d9}.steps article{text-align:center;position:relative}.step-icon{position:relative;margin:0 auto 10px;background:#075ddd;color:#fff;width:56px;height:56px;border-radius:50%;display:grid;place-items:center}.step-icon svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.steps h3{font-size:13px;margin:0 0 4px}.steps p{font-size:10.5px;line-height:1.4;margin:0 auto;max-width:130px}.cta{margin-top:18px;margin-bottom:30px;background:linear-gradient(110deg,#061032,#071749 65%,#061238);border-radius:8px;min-height:176px;color:white;display:grid;grid-template-columns:170px 1fr 330px;align-items:center;position:relative}.cta:after{content:'';position:absolute;right:0;inset-block:0;width:230px;background:radial-gradient(circle at 80% 70%,#0b43a7 0 3px,transparent 4px),radial-gradient(circle at 90% 45%,#0b43a7 0 3px,transparent 4px);opacity:.7}.cta-gear{display:grid;place-items:center}.cta-gear svg{width:95px;height:95px;fill:none;stroke:white;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}.cta-copy{z-index:1}.cta-copy h2{text-align:left;font-size:25px;margin:0 0 8px}.cta-copy p{font-size:14px;line-height:1.55;margin:0}.cta-actions{display:grid;gap:12px;z-index:1}.cta-actions a{height:48px;border:1px solid #fff;border-radius:4px;color:#fff;text-decoration:none;font-size:14px;display:flex;align-items:center;justify-content:space-between;padding:0 22px}.cta-actions a.primary{border-color:#075ddd;background:#075ddd}.cta-actions span{font-size:25px}
+  @media(max-width:1000px){.hero{height:520px}.hero>img{opacity:.48;object-position:62% center}.hero h1{font-size:44px}.solutions-grid{grid-template-columns:repeat(2,1fr)}.value-grid{grid-template-columns:repeat(2,1fr)}.value-grid article:nth-child(3){border-left:0;border-top:1px solid #e2e6ed}.value-grid article:nth-child(4){border-top:1px solid #e2e6ed}.steps{grid-template-columns:repeat(4,1fr);gap:24px 0}.steps:before{display:none}.cta{grid-template-columns:120px 1fr 280px}}
+  @media(max-width:680px){.wrap{padding-left:20px;padding-right:20px}.hero{height:580px}.hero>img{opacity:.24;object-position:70% bottom}.hero-copy{padding-top:42px}.eyebrow{font-size:14px}.hero h1{font-size:38px;line-height:1.12}.hero-copy>p:last-child{font-size:15px}.solutions-grid{grid-template-columns:1fr}.solution-card{grid-template-columns:72px 1fr;padding:20px 16px;min-height:0}.icon.large{width:60px;height:60px}.icon.large svg{width:34px;height:34px}.value-grid{grid-template-columns:1fr}.value-grid article+article{border-left:0;border-top:1px solid #e2e6ed}.steps{grid-template-columns:repeat(2,1fr)}.cta{margin-inline:12px;padding:26px 22px;grid-template-columns:1fr;text-align:center}.cta-gear{display:none}.cta-copy h2{text-align:center;font-size:23px}.cta-copy p br{display:none}.cta-actions{margin-top:20px}.section>h2{font-size:16px}}
+  @media(max-width:680px){.solutions-page .solution-card{min-height:0}.solutions-page .card-body h3{font-size:19px}.solutions-page .card-body p{font-size:13.5px}.solutions-page .card-body li{font-size:13px}}
+</style>

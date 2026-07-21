@@ -91,6 +91,37 @@ Verify licensing status directly at [icon-sets.iconify.design/tabler](https://ic
 Fetched via `curl "https://api.iconify.design/tabler:<name>.svg"` and inlined
 as raw SVG path data (no runtime dependency on Iconify).
 
+### Solutions page icons (`src/components/pages/Solutions.astro`)
+
+The Solutions page uses **Tabler Icons** (MIT) from Iconify, plus the existing
+**Lucide** handshake icon (MIT) already used on the People page. Icons that
+were already present elsewhere in the site reuse the same inline SVG path
+data. New icons are saved locally in `public/icons-iconify/solutions/`, so the
+production page has no runtime dependency on the Iconify API.
+
+| Use | Iconify icon name | Source in this project |
+| --- | --- | --- |
+| Digital Engineering | `tabler:compass` | Local SVG file |
+| Product Lifecycle Management | `tabler:cube` | Reused from `WhatWeDo.astro` |
+| Custom Software & Enterprise Platforms | `tabler:device-laptop` | Local SVG file |
+| Enterprise Integration | `tabler:hierarchy-3` | Local SVG file |
+| Artificial Intelligence & Automation | `tabler:brain` | Reused from `WhatWeDo.astro` |
+| Cloud, DevOps & Cyber Security | `tabler:cloud-lock` | Local SVG file |
+| Engineering First | `tabler:users-group` | Reused from existing Home/People components |
+| End-to-End Delivery | `tabler:shield-check` | Local SVG file |
+| Global Expertise | `tabler:world` | Reused from existing Home/People components |
+| Technology Independent | `tabler:bulb` | Local SVG file |
+| Discover | `tabler:search` | Reused from `ProcessSection.astro` |
+| Design | `tabler:pencil` | Local SVG file |
+| Build | `tabler:hammer` | Local SVG file |
+| Integrate | `tabler:route-alt-left` | Local SVG file |
+| Deploy | `tabler:rocket` | Reused from `ProcessSection.astro` |
+| Support | `lucide:handshake` | Reused from `WhyChooseTeam.astro` |
+| Optimise | `tabler:chart-bar` | Local SVG file |
+
+The locally saved SVGs were fetched from `api.iconify.design`, use the site
+blue as their stroke color, and otherwise retain the original icon geometry.
+
 ### Approach page icons (`src/components/pages/Approach.astro`)
 
 The delivery-step and value-pillar icons use locally inlined SVG paths from

@@ -10,6 +10,36 @@ body {
   background-color: #151824;
 }
 
+/* Consistent scrollbar styling across pages and scrollable components. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4c8dff #eaf0fe;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #eaf0fe;
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6da0ff, #2563eb);
+  border: 2px solid #eaf0fe;
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4c8dff, #1d4fd1);
+}
+
+*::-webkit-scrollbar-corner {
+  background: #eaf0fe;
+}
+
 h1,
 h2,
 h3,
